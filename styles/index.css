@@ -1,0 +1,60 @@
+.inner-postcodes > div {
+  display: inline-block;
+  margin: 2px 3px;
+  padding: 2px 5px;
+  background: #eee;
+  border-radius: 7px;
+}
+
+.inner-postcodes > div:first-child {
+  margin-left: 0;
+}
+.inner-postcodes > div:last-child {
+  margin-right: 0;
+}
+
+#modal-blacklisted, #modal-whitelisted {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 100;
+  transform: translate(-50%, -50%);
+  max-width: 1400px;
+  width: 90%;
+  padding: 20px;
+  background: #eee;
+  border-radius: 10px;
+  max-height: 500px;
+  visibility: hidden;
+  transition: all 0.2s ease-out;
+  opacity: 0;
+}
+
+.redBtn button {
+  background: #de0000;
+}
+
+.redBtn button:hover {
+  background: #bd0000;
+}
+
+#modal-blacklisted.show, #modal-whitelisted.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.closeModal {
+  position: absolute;
+  top: 0px;
+  right: 24px;
+  z-index: 1;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#modal-blacklisted .Polaris-Card__Section, #modal-whitelisted .Polaris-Card__Section {
+  overflow-x: hidden;
+  overflow-y:scroll;
+  height: 400px;
+}
