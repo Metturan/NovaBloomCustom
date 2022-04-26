@@ -347,7 +347,7 @@ export async function createServer(
       }
     })
   
-    app.get("/api/postcode", verifyRequest(app), async (req,res) => {
+    app.get("/api/postcode", async (req,res) => {
       try {
         let postcodesFromDB = await MongoPostcode.find({});
         
