@@ -1024,7 +1024,7 @@ document.head.appendChild(script);
   
   // cart flow - run on cart page
   if (baseEl) {
-    fetch('https://calm-fjord-82942.herokuapp.com/api/postcode?shop=extestdevstore.myshopify.com')
+    fetch('https://nameless-caverns-60814.herokuapp.com/api/postcode?shop=extestdevstore.myshopify.com')
     .then(res => res.json())
     .then(data2 => {
   
@@ -1036,7 +1036,7 @@ document.head.appendChild(script);
     checkIfCardAdded()
 
     // Grab second step (naming is backward)
-    fetch('https://calm-fjord-82942.herokuapp.com/api/products?shop=extestdevstore.myshopify.com')
+    fetch('https://nameless-caverns-60814.herokuapp.com/api/products?shop=extestdevstore.myshopify.com')
     .then(res => res.json())
     .then(async data => {
       multiStepCart(data)
@@ -1062,20 +1062,20 @@ document.head.appendChild(script);
       // }
 
       // grab card products and render them to third step
-      fetch('https://calm-fjord-82942.herokuapp.com/api/cardProducts?shop=extestdevstore.myshopify.com')
+      fetch('https://nameless-caverns-60814.herokuapp.com/api/cardProducts?shop=extestdevstore.myshopify.com')
         .then(res => res.json())
         .then(async data => {
             // Render 3rd UI
             thirdPartCart(data)
             getProductsInfoForUpsell()
   
-            fetch('https://calm-fjord-82942.herokuapp.com/api/deliveryInstructions?shop=extestdevstore.myshopify.com')
+            fetch('https://nameless-caverns-60814.herokuapp.com/api/deliveryInstructions?shop=extestdevstore.myshopify.com')
               .then(res => res.json())
               .then(async data => {
                 deliveryOptionsSelect(data)
                 cloneCartCheckoutButton()
 
-                fetch('https://calm-fjord-82942.herokuapp.com/api/occasion?shop=extestdevstore.myshopify.com')
+                fetch('https://nameless-caverns-60814.herokuapp.com/api/occasion?shop=extestdevstore.myshopify.com')
                   .then(res => res.json())
                   .then(async data => {
                     occasionOptionsSelect(data)
@@ -1115,7 +1115,7 @@ document.head.appendChild(script);
   if (body.classList.contains('template-index') || body.classList.contains('template-collection')) {
  // home/collection page flow - run on those templates
 
-    fetch('https://calm-fjord-82942.herokuapp.com/api/postcode?shop=extestdevstore.myshopify.com')
+    fetch('https://nameless-caverns-60814.herokuapp.com/api/postcode?shop=extestdevstore.myshopify.com')
       .then(res => res.json())
       .then(data2 => {
         setupPostcodeArrays(data2);
@@ -1128,7 +1128,7 @@ document.head.appendChild(script);
 
 // product page flow
   if (body.classList.contains('template-product')) {
-    fetch('https://calm-fjord-82942.herokuapp.com/api/postcode?shop=extestdevstore.myshopify.com')
+    fetch('https://nameless-caverns-60814.herokuapp.com/api/postcode?shop=extestdevstore.myshopify.com')
       .then(res => res.json())
       .then(data2 => {
         setupPostcodeArrays(data2);

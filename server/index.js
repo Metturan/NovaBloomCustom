@@ -7,6 +7,7 @@ import "dotenv/config";
 
 import applyAuthMiddleware from "./middleware/auth.js";
 import verifyRequest from "./middleware/verify-request.js";
+import cors from 'cors'
 
 import mongoose from "mongoose";
 mongoose.connect(process.env.MONGO_URI)
@@ -395,7 +396,9 @@ export async function createServer(
     // End of my code apis
 
   app.use(express.json());
-
+  app.use(cors({
+    origin: '*'
+  }));
   app.use((req, res, next) => {
     const shop = req.query.shop;
     if (Shopify.Context.IS_EMBEDDED_APP && shop) {
