@@ -17,7 +17,6 @@ import '../models/UpsellCollection.js'
 import '../models/CardCollection.js'
 import '../models/CardProducts.js'
 import '../models/DeliveryOptions.js'
-import '../models/Occassions.js' 
 
 
 
