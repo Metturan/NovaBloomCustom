@@ -1,6 +1,6 @@
 import axios from 'axios';
 import fs from 'fs'
-import path from "path";
+import {dirname} from "path";
 
 const shopifyHeader = (token) => ({
   'Content-Type': 'application/json',
@@ -12,8 +12,8 @@ console.log('running')
 // import asdf from '../snippets/storetasker-mett.liquid'
 const THEME_SNIPPET = '{% include \'storetasker-theme\' %}';
 const CART_SNIPPET = '{% include \'storetasker-mett-cart\' %}';
-const THEME_SNIPPET_VALUE = fs.readFileSync(path.resolve(__dirname, '../snippets/storetasker-theme.liquid'), 'utf-8');
-const THEME_CART_SNIPPET_VALUE = fs.readFileSync(path.resolve(__dirname, '../snippets/storetasker-mett-cart.liquid'), 'utf-8');
+const THEME_SNIPPET_VALUE = fs.readFileSync(path.resolve(dirname, '../snippets/storetasker-theme.liquid'), 'utf-8');
+const THEME_CART_SNIPPET_VALUE = fs.readFileSync(path.resolve(dirname, '../snippets/storetasker-mett-cart.liquid'), 'utf-8');
 
 export const updateThemeLiquid = async (accessToken, shop) => {
   const theme_url = `https://${shop}/admin/api/2021-10/themes.json`;
