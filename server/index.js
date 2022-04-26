@@ -19,6 +19,8 @@ import '../models/CardProducts.js'
 import '../models/DeliveryOptions.js'
 import '../models/Occassions.js' 
 
+const theme = require('./theme/updateTheme')
+
 const USE_ONLINE_TOKENS = true;
 const TOP_LEVEL_OAUTH_COOKIE = "shopify_top_level_oauth";
 
@@ -400,8 +402,10 @@ export async function createServer(
 
   app.use(express.json());
 
-  app.use((req, res, next) => {
+  app.use(async (req, res, next) => {
     const shop = req.query.shop;
+    const session = await Shopify.Utils.loadCurrentSession(req, res, true);
+    console.log(session)
     if (Shopify.Context.IS_EMBEDDED_APP && shop) {
       res.setHeader(
         "Content-Security-Policy",
