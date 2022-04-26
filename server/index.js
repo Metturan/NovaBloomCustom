@@ -52,6 +52,9 @@ export async function createServer(
   isProd = process.env.NODE_ENV === "production"
 ) {
   const app = express();
+  app.use(cors({
+    origin: '*'
+  }));
   app.set("top-level-oauth-cookie", TOP_LEVEL_OAUTH_COOKIE);
   app.set("active-shopify-shops", ACTIVE_SHOPIFY_SHOPS);
   app.set("use-online-tokens", USE_ONLINE_TOKENS);
@@ -396,9 +399,7 @@ export async function createServer(
     // End of my code apis
 
   app.use(express.json());
-  app.use(cors({
-    origin: '*'
-  }));
+
   app.use((req, res, next) => {
     const shop = req.query.shop;
     if (Shopify.Context.IS_EMBEDDED_APP && shop) {
