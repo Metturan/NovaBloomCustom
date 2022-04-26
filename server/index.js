@@ -115,7 +115,7 @@ export async function createServer(
       }
     })
   
-    app.delete('/api/deliveryInstructions', verifyRequest(app), async (req,res) => {
+    app.delete('/api/deliveryInstructions', async (req,res) => {
       try {
         MongoDeliveryInstructions.deleteMany({}, function(err) {
           if (err) return;
@@ -127,7 +127,7 @@ export async function createServer(
       }
     })
   
-    app.post('/api/deliveryInstructions', verifyRequest(app), async (req,res)=> {
+    app.post('/api/deliveryInstructions', async (req,res)=> {
       try {
         var jsonString = '';
   
@@ -149,7 +149,7 @@ export async function createServer(
       }
     })
   
-    app.get("/api/collectionCard", verifyRequest(app), async (req, res) => {
+    app.get("/api/collectionCard", async (req, res) => {
       try {
         let collectionCardIdfromDB = await MongoCardCollection.find({});
   
@@ -163,7 +163,7 @@ export async function createServer(
       }
     })
   
-    app.post('/api/cardProducts', verifyRequest(app), async (req,res)=> {
+    app.post('/api/cardProducts', async (req,res)=> {
       try {
   
         var jsonString = '';
@@ -192,7 +192,7 @@ export async function createServer(
       }
     })
   
-    app.post('/api/collectionCard', verifyRequest(app), async (req,res)=> {
+    app.post('/api/collectionCard', async (req,res)=> {
       try {
         var jsonString = '';
   
@@ -213,7 +213,7 @@ export async function createServer(
       }
     })
   
-    app.delete('/api/collectionCard', verifyRequest(app), async (req,res) => {
+    app.delete('/api/collectionCard', async (req,res) => {
       try {
         MongoCardCollection.deleteMany({}, function (err) {
           if (err) return;
@@ -227,7 +227,7 @@ export async function createServer(
       }
     })
   
-    app.delete('/api/cardProducts', verifyRequest(app), async (req,res) => {
+    app.delete('/api/cardProducts', async (req,res) => {
       try {
   
         MongoCardProduct.deleteMany({}, function(err) {
@@ -242,7 +242,7 @@ export async function createServer(
       }
     })
   
-    app.get("/api/collectionUpsell", verifyRequest(app), async (req,res) => {
+    app.get("/api/collectionUpsell", async (req,res) => {
       try {
         let upsellCollectionIdfromDB = await MongoUpsellCollection.find({});
   
@@ -257,7 +257,7 @@ export async function createServer(
       }
     })
   
-    app.delete('/api/collectionUpsell', verifyRequest(app), async (req,res) => {
+    app.delete('/api/collectionUpsell', async (req,res) => {
       try {
         MongoUpsellCollection.deleteMany({}, function (err) {
           if (err) return;
@@ -270,7 +270,7 @@ export async function createServer(
       }
     })
   
-    app.post('/api/collectionUpsell', verifyRequest(app), async (req,res)=> {
+    app.post('/api/collectionUpsell', async (req,res)=> {
       try {
         var jsonString = '';
   
@@ -292,7 +292,7 @@ export async function createServer(
       }
     })
   
-    app.get("/api/products", verifyRequest(app), async (req,res) => {
+    app.get("/api/products", async (req,res) => {
       try {
         let productsFromDB = await MongoProduct.find({});
   
@@ -307,7 +307,7 @@ export async function createServer(
       }
     })
   
-    app.delete('/api/products', verifyRequest(app), async (req,res) => {
+    app.delete('/api/products',  async (req,res) => {
       try {
         MongoProduct.deleteMany({}, function(err) {
           if (err) return;
@@ -320,7 +320,7 @@ export async function createServer(
       }
     })
   
-    app.post('/api/products', verifyRequest(app), async (req,res)=> {
+    app.post('/api/products', async (req,res)=> {
       try {
         var jsonString = '';
   
@@ -362,7 +362,7 @@ export async function createServer(
       }
     })
   
-    app.post('/api/postcode', verifyRequest(app), async (req,res)=> {
+    app.post('/api/postcode', async (req,res)=> {
       try {
   
         var jsonString = '';
