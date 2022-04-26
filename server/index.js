@@ -89,309 +89,309 @@ export async function createServer(
   });
 
     // Start of my code
-    // const MongoProduct = mongoose.model('products')
-    // const MongoPostcode = mongoose.model('postalcode')
-    // const MongoUpsellCollection = mongoose.model('upsellCollection')
-    // const MongoCardCollection = mongoose.model('cardCollection')
-    // const MongoCardProduct = mongoose.model('cardProducts')
-    // const MongoDeliveryInstructions = mongoose.model('deliveryOptions')
-    // const MongoOccasions = mongoose.model('occasionOptions')
+    const MongoProduct = mongoose.model('products')
+    const MongoPostcode = mongoose.model('postalcode')
+    const MongoUpsellCollection = mongoose.model('upsellCollection')
+    const MongoCardCollection = mongoose.model('cardCollection')
+    const MongoCardProduct = mongoose.model('cardProducts')
+    const MongoDeliveryInstructions = mongoose.model('deliveryOptions')
+    const MongoOccasions = mongoose.model('occasionOptions')
   
-    // app.get("/api/deliveryInstructions", async (req, res) => {
-    //   try {
-    //     let deliveryOptionsfromDB = await MongoDeliveryInstructions.find({});
-    //     // console.log('getrequest', req)
-    //     let body = {
-    //       status: 'Success',
-    //       data:  deliveryOptionsfromDB
-    //     }
-    //     res.status(200).send(body)
-    //   } catch(error) {
-    //     console.log('error', error)
-    //   }
-    // })
+    app.get("/api/deliveryInstructions", async (req, res) => {
+      try {
+        let deliveryOptionsfromDB = await MongoDeliveryInstructions.find({});
+        // console.log('getrequest', req)
+        let body = {
+          status: 'Success',
+          data:  deliveryOptionsfromDB
+        }
+        res.status(200).send(body)
+      } catch(error) {
+        console.log('error', error)
+      }
+    })
   
-    // app.delete('/api/deliveryInstructions', verifyRequest(app), async (req,res) => {
-    //   try {
-    //     MongoDeliveryInstructions.deleteMany({}, function(err) {
-    //       if (err) return;
-    //       res.status(200).send();
-    //       console.log('Delivery Options deleted')
-    //     })
-    //   } catch(err) {
-    //     console.log(err)
-    //   }
-    // })
+    app.delete('/api/deliveryInstructions', verifyRequest(app), async (req,res) => {
+      try {
+        MongoDeliveryInstructions.deleteMany({}, function(err) {
+          if (err) return;
+          res.status(200).send();
+          console.log('Delivery Options deleted')
+        })
+      } catch(err) {
+        console.log(err)
+      }
+    })
   
-    // app.post('/api/deliveryInstructions', verifyRequest(app), async (req,res)=> {
-    //   try {
-    //     var jsonString = '';
+    app.post('/api/deliveryInstructions', verifyRequest(app), async (req,res)=> {
+      try {
+        var jsonString = '';
   
-    //     req.on('data', function (data) {
-    //         jsonString += data;
-    //     });
+        req.on('data', function (data) {
+            jsonString += data;
+        });
   
-    //     req.on('end', async function () {
-    //         var body = JSON.parse(jsonString);
-    //         // Check if item in DB
-    //         console.log(body)
-    //         var instance = new MongoDeliveryInstructions({deliveryOptionsId: body})
-    //         await instance.save()
-    //           .then(() => res.status(200).send())
-    //           .catch(err => console.log(err))
-    //     });
-    //   } catch(err) {
-    //     console.log(err)
-    //   }
-    // })
+        req.on('end', async function () {
+            var body = JSON.parse(jsonString);
+            // Check if item in DB
+            console.log(body)
+            var instance = new MongoDeliveryInstructions({deliveryOptionsId: body})
+            await instance.save()
+              .then(() => res.status(200).send())
+              .catch(err => console.log(err))
+        });
+      } catch(err) {
+        console.log(err)
+      }
+    })
   
-    // app.get("/api/collectionCard", verifyRequest(app), async (req, res) => {
-    //   try {
-    //     let collectionCardIdfromDB = await MongoCardCollection.find({});
+    app.get("/api/collectionCard", verifyRequest(app), async (req, res) => {
+      try {
+        let collectionCardIdfromDB = await MongoCardCollection.find({});
   
-    //     let body = {
-    //       status: 'Success',
-    //       data:  collectionCardIdfromDB
-    //     }
-    //     res.status(200).send(body)
-    //   } catch(error) {
-    //     console.log('error getting upsell collection:', error)
-    //   }
-    // })
+        let body = {
+          status: 'Success',
+          data:  collectionCardIdfromDB
+        }
+        res.status(200).send(body)
+      } catch(error) {
+        console.log('error getting upsell collection:', error)
+      }
+    })
   
-    // app.post('/api/cardProducts', verifyRequest(app), async (req,res)=> {
-    //   try {
+    app.post('/api/cardProducts', verifyRequest(app), async (req,res)=> {
+      try {
   
-    //     var jsonString = '';
+        var jsonString = '';
   
-    //       req.on('data', function (data) {
-    //           jsonString += data;
-    //       });
+          req.on('data', function (data) {
+              jsonString += data;
+          });
   
-    //       req.on('end', async function () {
-    //         var body = JSON.parse(jsonString);
-    //         var el = {
-    //           cardList: {
-    //             cardsId: body.products,
-    //             collectionTitle: body.collectionTitle
-    //           }
-    //         }
+          req.on('end', async function () {
+            var body = JSON.parse(jsonString);
+            var el = {
+              cardList: {
+                cardsId: body.products,
+                collectionTitle: body.collectionTitle
+              }
+            }
   
-    //         // Check if item in DB
-    //         var instance = new MongoCardProduct(el)
-    //         await instance.save()
-    //           .then(() => res.status(200).send())
-    //           .catch(err => console.log(err))
-    //       });
-    //   } catch(err) {
-    //     console.log(err)
-    //   }
-    // })
+            // Check if item in DB
+            var instance = new MongoCardProduct(el)
+            await instance.save()
+              .then(() => res.status(200).send())
+              .catch(err => console.log(err))
+          });
+      } catch(err) {
+        console.log(err)
+      }
+    })
   
-    // app.post('/api/collectionCard', verifyRequest(app), async (req,res)=> {
-    //   try {
-    //     var jsonString = '';
+    app.post('/api/collectionCard', verifyRequest(app), async (req,res)=> {
+      try {
+        var jsonString = '';
   
-    //       req.on('data', function (data) {
-    //           jsonString += data;
-    //       });
+          req.on('data', function (data) {
+              jsonString += data;
+          });
   
-    //       req.on('end', async function () {
-    //           var body = JSON.parse(jsonString);
-    //           var instance = new MongoCardCollection({cardCollectionId: body.collection})
-    //           await instance.save()
-    //             .then(() => res.status(200).send())
-    //             .catch(err => console.log(err))
-    //       });
+          req.on('end', async function () {
+              var body = JSON.parse(jsonString);
+              var instance = new MongoCardCollection({cardCollectionId: body.collection})
+              await instance.save()
+                .then(() => res.status(200).send())
+                .catch(err => console.log(err))
+          });
   
-    //   } catch(err) {
-    //     console.log(err)
-    //   }
-    // })
+      } catch(err) {
+        console.log(err)
+      }
+    })
   
-    // app.delete('/api/collectionCard', verifyRequest(app), async (req,res) => {
-    //   try {
-    //     MongoCardCollection.deleteMany({}, function (err) {
-    //       if (err) return;
+    app.delete('/api/collectionCard', verifyRequest(app), async (req,res) => {
+      try {
+        MongoCardCollection.deleteMany({}, function (err) {
+          if (err) return;
   
-    //       res.status(200).send()
-    //       console.log('card collection deleted')
-    //     })
+          res.status(200).send()
+          console.log('card collection deleted')
+        })
   
-    //   } catch(err) {
-    //     console.log(err)
-    //   }
-    // })
+      } catch(err) {
+        console.log(err)
+      }
+    })
   
-    // app.delete('/api/cardProducts', verifyRequest(app), async (req,res) => {
-    //   try {
+    app.delete('/api/cardProducts', verifyRequest(app), async (req,res) => {
+      try {
   
-    //     MongoCardProduct.deleteMany({}, function(err) {
-    //       if (err) return;
+        MongoCardProduct.deleteMany({}, function(err) {
+          if (err) return;
   
-    //       res.status(200).send()
-    //       console.log('Products deleted')
-    //     })
+          res.status(200).send()
+          console.log('Products deleted')
+        })
   
-    //   } catch(err) {
-    //     console.log(err)
-    //   }
-    // })
+      } catch(err) {
+        console.log(err)
+      }
+    })
   
-    // app.get("/api/collectionUpsell", verifyRequest(app), async (req,res) => {
-    //   try {
-    //     let upsellCollectionIdfromDB = await MongoUpsellCollection.find({});
+    app.get("/api/collectionUpsell", verifyRequest(app), async (req,res) => {
+      try {
+        let upsellCollectionIdfromDB = await MongoUpsellCollection.find({});
   
-    //     let body = {
-    //       status: 'Success',
-    //       data:  upsellCollectionIdfromDB
-    //     }
+        let body = {
+          status: 'Success',
+          data:  upsellCollectionIdfromDB
+        }
   
-    //     res.status(200).send(body)
-    //   } catch(error) {
-    //     console.log('error getting upsell collection:', error)
-    //   }
-    // })
+        res.status(200).send(body)
+      } catch(error) {
+        console.log('error getting upsell collection:', error)
+      }
+    })
   
-    // app.delete('/api/collectionUpsell', verifyRequest(app), async (req,res) => {
-    //   try {
-    //     MongoUpsellCollection.deleteMany({}, function (err) {
-    //       if (err) return;
+    app.delete('/api/collectionUpsell', verifyRequest(app), async (req,res) => {
+      try {
+        MongoUpsellCollection.deleteMany({}, function (err) {
+          if (err) return;
   
-    //       res.status(200).send();
-    //       console.log('upsell collection deleted')
-    //     })
-    //   } catch(err) {
-    //     console.log(err)
-    //   }
-    // })
+          res.status(200).send();
+          console.log('upsell collection deleted')
+        })
+      } catch(err) {
+        console.log(err)
+      }
+    })
   
-    // app.post('/api/collectionUpsell', verifyRequest(app), async (req,res)=> {
-    //   try {
-    //     var jsonString = '';
+    app.post('/api/collectionUpsell', verifyRequest(app), async (req,res)=> {
+      try {
+        var jsonString = '';
   
-    //     req.on('data', function (data) {
-    //         jsonString += data;
-    //     });
+        req.on('data', function (data) {
+            jsonString += data;
+        });
   
-    //     req.on('end', async function () {
-    //         var body = JSON.parse(jsonString);
-    //         // Check if item in DB
-    //         var instance = new MongoUpsellCollection({upsellCollectionId: body.collection})
-    //         await instance.save()
-    //           .then(() => res.status(200).send())
-    //           .catch(err => console.log(err))
-    //         });
+        req.on('end', async function () {
+            var body = JSON.parse(jsonString);
+            // Check if item in DB
+            var instance = new MongoUpsellCollection({upsellCollectionId: body.collection})
+            await instance.save()
+              .then(() => res.status(200).send())
+              .catch(err => console.log(err))
+            });
      
-    //   } catch(err) {
-    //     console.log('error saving upsell collection:', err)
-    //   }
-    // })
+      } catch(err) {
+        console.log('error saving upsell collection:', err)
+      }
+    })
   
-    // app.get("/api/products", verifyRequest(app), async (req,res) => {
-    //   try {
-    //     let productsFromDB = await MongoProduct.find({});
+    app.get("/api/products", verifyRequest(app), async (req,res) => {
+      try {
+        let productsFromDB = await MongoProduct.find({});
   
-    //     let body = {
-    //       status: 'Success',
-    //       data: productsFromDB
-    //     }
+        let body = {
+          status: 'Success',
+          data: productsFromDB
+        }
   
-    //     res.status(200).send(body)
-    //   } catch(error) {
-    //     console.log(error)
-    //   }
-    // })
+        res.status(200).send(body)
+      } catch(error) {
+        console.log(error)
+      }
+    })
   
-    // app.delete('/api/products', verifyRequest(app), async (req,res) => {
-    //   try {
-    //     MongoProduct.deleteMany({}, function(err) {
-    //       if (err) return;
+    app.delete('/api/products', verifyRequest(app), async (req,res) => {
+      try {
+        MongoProduct.deleteMany({}, function(err) {
+          if (err) return;
   
-    //       res.status(200).send()
-    //       console.log('Products deleted')
-    //     })
-    //   } catch(err) {
-    //     console.log(err)
-    //   }
-    // })
+          res.status(200).send()
+          console.log('Products deleted')
+        })
+      } catch(err) {
+        console.log(err)
+      }
+    })
   
-    // app.post('/api/products', verifyRequest(app), async (req,res)=> {
-    //   try {
-    //     var jsonString = '';
+    app.post('/api/products', verifyRequest(app), async (req,res)=> {
+      try {
+        var jsonString = '';
   
-    //     req.on('data', function (data) {
-    //         jsonString += data;
-    //     });
+        req.on('data', function (data) {
+            jsonString += data;
+        });
   
-    //     req.on('end', async function () {
-    //         var body = JSON.parse(jsonString);
-    //         // Check if item in DB
-    //         var el = {
-    //           productList: {
-    //             productId: body.products,
-    //             collectionTitle: body.collectionTitle
-    //           }
-    //         }
-    //         var instance = new MongoProduct(el)
-    //         await instance.save()
-    //           .then(() => res.status(200).send())
-    //           .catch(err => console.log(err))
-    //     });
-    //   } catch(err) {
-    //     console.log(err)
-    //   }
-    // })
+        req.on('end', async function () {
+            var body = JSON.parse(jsonString);
+            // Check if item in DB
+            var el = {
+              productList: {
+                productId: body.products,
+                collectionTitle: body.collectionTitle
+              }
+            }
+            var instance = new MongoProduct(el)
+            await instance.save()
+              .then(() => res.status(200).send())
+              .catch(err => console.log(err))
+        });
+      } catch(err) {
+        console.log(err)
+      }
+    })
   
-    // app.get("/api/postcode", verifyRequest(app), async (req,res) => {
-    //   try {
-    //     let postcodesFromDB = await MongoPostcode.find({});
+    app.get("/api/postcode", verifyRequest(app), async (req,res) => {
+      try {
+        let postcodesFromDB = await MongoPostcode.find({});
         
-    //     let body = {
-    //       status: 'Success',
-    //       data: postcodesFromDB
-    //     }
+        let body = {
+          status: 'Success',
+          data: postcodesFromDB
+        }
   
-    //     res.status(200).send(body)
-    //   } catch(error) {
-    //     console.log(error)
-    //   }
-    // })
+        res.status(200).send(body)
+      } catch(error) {
+        console.log(error)
+      }
+    })
   
-    // app.post('/api/postcode', verifyRequest(app), async (req,res)=> {
-    //   try {
+    app.post('/api/postcode', verifyRequest(app), async (req,res)=> {
+      try {
   
-    //     var jsonString = '';
+        var jsonString = '';
   
-    //     req.on('data', function (data) {
-    //         jsonString += data;
-    //     });
+        req.on('data', function (data) {
+            jsonString += data;
+        });
   
-    //     req.on('end', function () {
-    //         var body = JSON.parse(jsonString);
+        req.on('end', function () {
+            var body = JSON.parse(jsonString);
   
-    //         if (body.status == 'blacklisted') {
-    //           MongoPostcode.findOneAndUpdate({"status": "blacklisted"}, {postcode:body.postcodeRecord}, function (err) {
-    //             if (err) return;
+            if (body.status == 'blacklisted') {
+              MongoPostcode.findOneAndUpdate({"status": "blacklisted"}, {postcode:body.postcodeRecord}, function (err) {
+                if (err) return;
                 
-    //             res.status(200).send()
-    //             console.log('postcode updated')
-    //           })
-    //         }
+                res.status(200).send()
+                console.log('postcode updated')
+              })
+            }
       
-    //         if (body.status == 'whitelisted') {
-    //           MongoPostcode.findOneAndUpdate({"status": "whitelisted"}, {postcode:body.postcodeRecord}, function (err) {
-    //             if (err) return;
+            if (body.status == 'whitelisted') {
+              MongoPostcode.findOneAndUpdate({"status": "whitelisted"}, {postcode:body.postcodeRecord}, function (err) {
+                if (err) return;
         
-    //             res.status(200).send()
-    //             console.log('postcode updated')
-    //           })
-    //         }
-    //     });
-    //   } catch(err) {
-    //     console.log(err)
-    //   }
-    // })
+                res.status(200).send()
+                console.log('postcode updated')
+              })
+            }
+        });
+      } catch(err) {
+        console.log(err)
+      }
+    })
     // End of my code apis
 
   app.use(express.json());
