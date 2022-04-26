@@ -19,7 +19,7 @@ import '../models/CardProducts.js'
 import '../models/DeliveryOptions.js'
 import '../models/Occassions.js' 
 
-import theme from './theme/updateTheme'
+import './theme/updateTheme'
 
 const USE_ONLINE_TOKENS = true;
 const TOP_LEVEL_OAUTH_COOKIE = "shopify_top_level_oauth";
