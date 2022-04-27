@@ -1,23 +1,35 @@
 import axios from 'axios';
 import {URL} from 'url'
 import fs from 'fs'
+import { getSessionToken } from "@shopify/app-bridge-utils";
 
-const shopifyHeader = (token) => ({
-  'Content-Type': 'application/json',
-  'X-Shopify-Access-Token': token,
+const instance = axios.create();
+// Intercept all requests on this Axios instance
+instance.interceptors.request.use(function (config) {
+  return getSessionToken(window.app) // requires a Shopify App Bridge instance
+    .then((token) => {
+      // Append your request headers with an authenticated token
+      config.headers["Authorization"] = `Bearer ${token}`;
+      return config;
+    });
 });
 
-console.log('running')
 
-// import asdf from '../snippets/storetasker-mett.liquid'
+// const shopifyHeader = (token) => ({
+//   'Content-Type': 'application/json',
+//   'X-Shopify-Access-Token': token,
+// });
+
+console.log('running theme file')
+
 const THEME_SNIPPET = '{% include \'storetasker-theme\' %}';
 const CART_SNIPPET = '{% include \'storetasker-mett-cart\' %}';
 const THEME_SNIPPET_VALUE = fs.readFileSync(new URL('../snippets/storetasker-theme.liquid', import.meta.url).pathname);
 const THEME_CART_SNIPPET_VALUE = fs.readFileSync(new URL('../snippets/storetasker-mett-cart.liquid', import.meta.url).pathname);
 
-export const updateThemeLiquid = async (accessToken, shop) => {
+export const updateThemeLiquid = async (shop) => {
   const theme_url = `https://${shop}/admin/api/2021-10/themes.json`;
-  const getTheme = await axios.get(theme_url, { headers: shopifyHeader(accessToken) });
+  const getTheme = await instance.get(theme_url);
   const theme = getTheme.data.themes.filter(
       (theme) => theme.role == 'main'
   )[0];
@@ -25,7 +37,7 @@ export const updateThemeLiquid = async (accessToken, shop) => {
   // console.log(theme.id)
   const asset_url = `https://${shop}/admin/api/2021-10/themes/${theme.id}/assets.json?asset[key]=layout/theme.liquid`;
   const cart_url = `https://${shop}/admin/api/2021-10/themes/${theme.id}/assets.json?asset[key]=sections/static-cart.liquid`;
-  const getThemeLiquid = await axios.get(asset_url, { headers: shopifyHeader(accessToken) });
+  const getThemeLiquid = await instance.get(asset_url);
   let { value } = getThemeLiquid.data.asset;
   const asset_put_url = `https://${shop}/admin/api/2021-10/themes/${theme.id}/assets.json`;
 
@@ -41,7 +53,7 @@ export const updateThemeLiquid = async (accessToken, shop) => {
       }
     });
 
-    await axios.put(asset_put_url, themeBody, { headers: shopifyHeader(accessToken) });
+    await instance.put(asset_put_url, themeBody);
   }
 
   const snippetBody = JSON.stringify({
@@ -51,10 +63,10 @@ export const updateThemeLiquid = async (accessToken, shop) => {
     }
   });
 
-  await axios.put(asset_put_url, snippetBody, { headers: shopifyHeader(accessToken) });
+  await instance.put(asset_put_url, snippetBody);
 
   // Add include snippet in cart section
-  const getCartLiquid = await axios.get(cart_url, { headers: shopifyHeader(accessToken) });
+  const getCartLiquid = await instance.get(cart_url);
   let cartValue = getCartLiquid.data.asset.value;
   // console.log(cartValue)
 
@@ -68,7 +80,7 @@ export const updateThemeLiquid = async (accessToken, shop) => {
       }
     });
 
-    await axios.put(asset_put_url, cartBody, { headers: shopifyHeader(accessToken) });
+    await instance.put(asset_put_url, cartBody);
   }
 
 // Add cart snippet code file named storetasker-mett-cart.liquid to editor
@@ -79,5 +91,5 @@ export const updateThemeLiquid = async (accessToken, shop) => {
     }
   });
 
-  await axios.put(asset_put_url, snippetCartBody, { headers: shopifyHeader(accessToken) });
+  await instance.put(asset_put_url, snippetCartBody);
 }
