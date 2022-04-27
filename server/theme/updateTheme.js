@@ -3,8 +3,11 @@ import {URL} from 'url'
 import fs from 'fs'
 import { getSessionToken } from "@shopify/app-bridge-utils";
 import {createApp} from '@shopify/app-bridge';
-import path, {__dirname} from 'path'
+import path from 'path'
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 console.log('running theme file')
 
