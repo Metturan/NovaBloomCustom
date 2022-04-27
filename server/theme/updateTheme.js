@@ -35,7 +35,7 @@ export const updateThemeLiquid = async (shop, host, apikey) => {
   const theme = getTheme.data.themes.filter(
       (theme) => theme.role == 'main'
   )[0];
-
+console.log('themes', getTheme.data.themes)
   // console.log(theme.id)
   const asset_url = `https://${shop}/admin/api/2022-04/themes/${theme.id}/assets.json?asset[key]=layout/theme.liquid`;
   const cart_url = `https://${shop}/admin/api/2022-04/themes/${theme.id}/assets.json?asset[key]=sections/static-cart.liquid`;
