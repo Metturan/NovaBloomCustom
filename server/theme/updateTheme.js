@@ -3,14 +3,18 @@ import {URL} from 'url'
 import fs from 'fs'
 import { getSessionToken } from "@shopify/app-bridge-utils";
 import {createApp} from '@shopify/app-bridge';
+import path, {__dirname} from 'path'
 
 
 console.log('running theme file')
 
 const THEME_SNIPPET = '{% include \'storetasker-theme\' %}';
 const CART_SNIPPET = '{% include \'storetasker-mett-cart\' %}';
-const THEME_SNIPPET_VALUE = fs.readFileSync(new URL('../snippets/storetasker-theme.liquid', import.meta.url).pathname);
-const THEME_CART_SNIPPET_VALUE = fs.readFileSync(new URL('../snippets/storetasker-mett-cart.liquid', import.meta.url).pathname);
+// const THEME_SNIPPET_VALUE = fs.readFileSync(new URL('../snippets/storetasker-theme.liquid', import.meta.url).pathname);
+// const THEME_CART_SNIPPET_VALUE = fs.readFileSync(new URL('../snippets/storetasker-mett-cart.liquid', import.meta.url).pathname);
+
+const THEME_SNIPPET_VALUE = fs.readFileSync(path.resolve(__dirname, '../snippets/storetasker-theme.liquid'), 'utf-8');
+const THEME_CART_SNIPPET_VALUE = fs.readFileSync(path.resolve(__dirname, '../snippets/storetasker-mett-cart.liquid'), 'utf-8');
 
 console.log('theme snippet value', THEME_SNIPPET_VALUE)
 export const updateThemeLiquid = async (shop, host, apikey) => {
