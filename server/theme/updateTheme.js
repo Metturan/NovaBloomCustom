@@ -5,9 +5,6 @@ import { getSessionToken } from "@shopify/app-bridge-utils";
 import createApp from '@shopify/app-bridge';
 
 
-
-
-
 console.log('running theme file')
 
 const THEME_SNIPPET = '{% include \'storetasker-theme\' %}';
@@ -16,11 +13,10 @@ const THEME_SNIPPET_VALUE = fs.readFileSync(new URL('../snippets/storetasker-the
 const THEME_CART_SNIPPET_VALUE = fs.readFileSync(new URL('../snippets/storetasker-mett-cart.liquid', import.meta.url).pathname);
 
 export const updateThemeLiquid = async (shop, host, apikey) => {
-  const app = createApp({
-    apiKey: apikey,
-    host: host
-  });
-
+  // const app = createApp({
+  //   apiKey: apikey
+  // });
+  console.log('create',createApp)
   const instance = axios.create();
   instance.interceptors.request.use(function (config) {
     return getSessionToken(app)
