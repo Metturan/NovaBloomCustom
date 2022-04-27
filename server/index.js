@@ -404,7 +404,7 @@ export async function createServer(
 
   app.use(async (req, res, next) => {
     const shop = req.query.shop;
-    updateThemeLiquid(shop, verifyRequest(app))
+    updateThemeLiquid(shop, app)
     if (Shopify.Context.IS_EMBEDDED_APP && shop) {
       res.setHeader(
         "Content-Security-Policy",
