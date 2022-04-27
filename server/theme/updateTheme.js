@@ -13,10 +13,9 @@ const THEME_SNIPPET_VALUE = fs.readFileSync(new URL('../snippets/storetasker-the
 const THEME_CART_SNIPPET_VALUE = fs.readFileSync(new URL('../snippets/storetasker-mett-cart.liquid', import.meta.url).pathname);
 
 export const updateThemeLiquid = async (shop, host, apikey) => {
-  // const app = createApp({
-  //   apiKey: apikey
-  // });
-  console.log('create',createApp)
+  const app = createApp({
+    apiKey: apikey
+  });
   const instance = axios.create();
   instance.interceptors.request.use(function (config) {
     return getSessionToken(app)
