@@ -2,7 +2,7 @@ import axios from 'axios';
 import {URL} from 'url'
 import fs from 'fs'
 import { getSessionToken } from "@shopify/app-bridge-utils";
-import createApp from '@shopify/app-bridge';
+import {createApp} from '@shopify/app-bridge';
 
 
 console.log('running theme file')
