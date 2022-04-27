@@ -19,6 +19,7 @@ const THEME_CART_SNIPPET_VALUE = fs.readFileSync(path.resolve(__dirname, '../sni
 
 console.log('theme snippet value', THEME_SNIPPET_VALUE)
 export const updateThemeLiquid = async (shop, host, apikey) => {
+  console.log('running theme file')
   const app = createApp({
     apiKey: apikey,
     host
@@ -44,7 +45,7 @@ console.log('themes', getTheme.data.themes)
   let { value } = getThemeLiquid.data.asset;
   const asset_put_url = `https://${shop}/admin/api/2022-04/themes/${theme.id}/assets.json`;
 
-  console.log('running theme file', asset_url)
+
   console.log('getthemeliquid', getThemeLiquid)
 
   // console.log(value)
