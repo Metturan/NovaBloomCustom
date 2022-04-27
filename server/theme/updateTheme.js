@@ -44,6 +44,7 @@ console.log('themes', getTheme.data.themes)
   const asset_put_url = `https://${shop}/admin/api/2022-04/themes/${theme.id}/assets.json`;
 
   console.log('running theme file', asset_url)
+  console.log('getthemeliquid', getThemeLiquid)
 
   // console.log(value)
   if (!value.includes(THEME_SNIPPET)) {
