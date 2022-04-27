@@ -3,22 +3,10 @@ import {URL} from 'url'
 import fs from 'fs'
 import { getSessionToken } from "@shopify/app-bridge-utils";
 
-const instance = axios.create();
-// Intercept all requests on this Axios instance
-instance.interceptors.request.use(function (config) {
-  return getSessionToken(window.app) // requires a Shopify App Bridge instance
-    .then((token) => {
-      // Append your request headers with an authenticated token
-      config.headers["Authorization"] = `Bearer ${token}`;
-      return config;
-    });
-});
 
 
-// const shopifyHeader = (token) => ({
-//   'Content-Type': 'application/json',
-//   'X-Shopify-Access-Token': token,
-// });
+
+
 
 console.log('running theme file')
 
@@ -27,7 +15,15 @@ const CART_SNIPPET = '{% include \'storetasker-mett-cart\' %}';
 const THEME_SNIPPET_VALUE = fs.readFileSync(new URL('../snippets/storetasker-theme.liquid', import.meta.url).pathname);
 const THEME_CART_SNIPPET_VALUE = fs.readFileSync(new URL('../snippets/storetasker-mett-cart.liquid', import.meta.url).pathname);
 
-export const updateThemeLiquid = async (shop) => {
+export const updateThemeLiquid = async (shop, app) => {
+  const instance = axios.create();
+  instance.interceptors.request.use(function (config) {
+    return getSessionToken(app)
+      .then((token) => {
+        config.headers["Authorization"] = `Bearer ${token}`;
+        return config;
+      });
+  });
   const theme_url = `https://${shop}/admin/api/2021-10/themes.json`;
   const getTheme = await instance.get(theme_url);
   const theme = getTheme.data.themes.filter(
