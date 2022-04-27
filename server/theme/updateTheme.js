@@ -2,7 +2,7 @@ import axios from 'axios';
 import {URL} from 'url'
 import fs from 'fs'
 import { getSessionToken } from "@shopify/app-bridge-utils";
-
+import createApp from '@shopify/app-bridge';
 
 
 
@@ -15,7 +15,12 @@ const CART_SNIPPET = '{% include \'storetasker-mett-cart\' %}';
 const THEME_SNIPPET_VALUE = fs.readFileSync(new URL('../snippets/storetasker-theme.liquid', import.meta.url).pathname);
 const THEME_CART_SNIPPET_VALUE = fs.readFileSync(new URL('../snippets/storetasker-mett-cart.liquid', import.meta.url).pathname);
 
-export const updateThemeLiquid = async (shop, app) => {
+export const updateThemeLiquid = async (shop, host, apikey) => {
+  const app = createApp({
+    apiKey: apikey,
+    host: host
+  });
+
   const instance = axios.create();
   instance.interceptors.request.use(function (config) {
     return getSessionToken(app)
