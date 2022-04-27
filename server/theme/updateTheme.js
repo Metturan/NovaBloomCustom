@@ -20,7 +20,8 @@ const THEME_CART_SNIPPET_VALUE = fs.readFileSync(path.resolve(__dirname, '../sni
 console.log('theme snippet value', THEME_SNIPPET_VALUE)
 export const updateThemeLiquid = async (shop, host, apikey) => {
   const app = createApp({
-    apiKey: apikey
+    apiKey: apikey,
+    host
   });
   const instance = axios.create();
   instance.interceptors.request.use(function (config) {
