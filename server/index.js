@@ -403,9 +403,9 @@ export async function createServer(
   app.use(express.json());
 
   app.use(async (req, res, next) => {
+    console.log(req.query)
     const shop = req.query.shop;
-    const session = await Shopify.Utils.loadCurrentSession(req, res, true);
-    console.log(session)
+
     if (Shopify.Context.IS_EMBEDDED_APP && shop) {
       res.setHeader(
         "Content-Security-Policy",
