@@ -1,6 +1,6 @@
 import axios from 'axios';
 import fs from 'fs'
-import {dirname} from "path";
+import path, {dirname} from "path";
 
 const shopifyHeader = (token) => ({
   'Content-Type': 'application/json',
