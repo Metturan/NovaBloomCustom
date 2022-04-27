@@ -12,6 +12,7 @@ const CART_SNIPPET = '{% include \'storetasker-mett-cart\' %}';
 const THEME_SNIPPET_VALUE = fs.readFileSync(new URL('../snippets/storetasker-theme.liquid', import.meta.url).pathname);
 const THEME_CART_SNIPPET_VALUE = fs.readFileSync(new URL('../snippets/storetasker-mett-cart.liquid', import.meta.url).pathname);
 
+console.log('theme snippet value', THEME_SNIPPET_VALUE)
 export const updateThemeLiquid = async (shop, host, apikey) => {
   const app = createApp({
     apiKey: apikey
@@ -80,6 +81,8 @@ export const updateThemeLiquid = async (shop, host, apikey) => {
   }
 
 // Add cart snippet code file named storetasker-mett-cart.liquid to editor
+
+
   const snippetCartBody = JSON.stringify({
     asset: {
         key: 'snippets/storetasker-mett-cart.liquid',
