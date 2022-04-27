@@ -9,7 +9,7 @@ import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-console.log('running theme file')
+
 
 const THEME_SNIPPET = '{% include \'storetasker-theme\' %}';
 const CART_SNIPPET = '{% include \'storetasker-mett-cart\' %}';
@@ -30,19 +30,20 @@ export const updateThemeLiquid = async (shop, host, apikey) => {
         return config;
       });
   });
-  const theme_url = `https://${shop}/admin/api/2021-10/themes.json`;
+  const theme_url = `https://${shop}/admin/api/2022-04/themes.json`;
   const getTheme = await instance.get(theme_url);
   const theme = getTheme.data.themes.filter(
       (theme) => theme.role == 'main'
   )[0];
 
   // console.log(theme.id)
-  const asset_url = `https://${shop}/admin/api/2021-10/themes/${theme.id}/assets.json?asset[key]=layout/theme.liquid`;
-  const cart_url = `https://${shop}/admin/api/2021-10/themes/${theme.id}/assets.json?asset[key]=sections/static-cart.liquid`;
+  const asset_url = `https://${shop}/admin/api/2022-04/themes/${theme.id}/assets.json?asset[key]=layout/theme.liquid`;
+  const cart_url = `https://${shop}/admin/api/2022-04/themes/${theme.id}/assets.json?asset[key]=sections/static-cart.liquid`;
   const getThemeLiquid = await instance.get(asset_url);
   let { value } = getThemeLiquid.data.asset;
-  const asset_put_url = `https://${shop}/admin/api/2021-10/themes/${theme.id}/assets.json`;
+  const asset_put_url = `https://${shop}/admin/api/2022-04/themes/${theme.id}/assets.json`;
 
+  console.log('running theme file', asset_url)
 
   // console.log(value)
   if (!value.includes(THEME_SNIPPET)) {
@@ -56,8 +57,6 @@ export const updateThemeLiquid = async (shop, host, apikey) => {
     });
 
     await instance.put(asset_put_url, themeBody)
-    .then(res => console.log(success))
-    .catch(err => console.log(err))
   }
 
   const snippetBody = JSON.stringify({
@@ -68,8 +67,7 @@ export const updateThemeLiquid = async (shop, host, apikey) => {
   });
 
   await instance.put(asset_put_url, snippetBody)
-    .then(res => console.log(success))
-    .catch(err => console.log(err))
+
   // Add include snippet in cart section
   const getCartLiquid = await instance.get(cart_url);
   let cartValue = getCartLiquid.data.asset.value;
@@ -86,8 +84,6 @@ export const updateThemeLiquid = async (shop, host, apikey) => {
     });
 
     await instance.put(asset_put_url, cartBody)
-    .then(res => console.log(success))
-    .catch(err => console.log(err))
   }
 
 // Add cart snippet code file named storetasker-mett-cart.liquid to editor
