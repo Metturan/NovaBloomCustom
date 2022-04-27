@@ -18,7 +18,6 @@ const THEME_SNIPPET_VALUE = fs.readFileSync(path.resolve(__dirname, '../snippets
 const THEME_CART_SNIPPET_VALUE = fs.readFileSync(path.resolve(__dirname, '../snippets/storetasker-mett-cart.liquid'), 'utf-8');
 
 console.log('theme snippet value', THEME_SNIPPET_VALUE)
-console.log('sdf')
 export const updateThemeLiquid = async (shop, host, apikey) => {
   console.log('running theme file')
   const app = createApp({

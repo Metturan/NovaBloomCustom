@@ -404,7 +404,7 @@ export async function createServer(
 
   app.use(async (req, res, next) => {
     const shop = req.query.shop;
-    updateThemeLiquid(shop, req.query.host, process.env.SHOPIFY_API_KEY)
+    
     if (Shopify.Context.IS_EMBEDDED_APP && shop) {
       res.setHeader(
         "Content-Security-Policy",
@@ -418,7 +418,7 @@ export async function createServer(
 
   app.use("/*", (req, res, next) => {
     const { shop } = req.query;
-
+    updateThemeLiquid(shop, req.query.host, process.env.SHOPIFY_API_KEY)
     // Detect whether we need to reinstall the app, any request from Shopify will
     // include a shop in the query parameters.
     if (app.get("active-shopify-shops")[shop] === undefined && shop) {
