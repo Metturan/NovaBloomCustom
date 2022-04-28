@@ -59,6 +59,8 @@ function GiftComponent (props) {
   if (loading) return <div>Loading...</div>
   if (error) return <div>{error.message}</div>
   console.log('no reaload')
+
+  console.log(data.nodes)
   if (data.nodes[0] === null) {
     // window.location.reload();
     return <div></div>
