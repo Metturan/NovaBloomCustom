@@ -62,7 +62,7 @@ function TestComponent (props) {
   if (error) return <div>{error.message}</div>
 
   if (data.nodes[0] === null) {
-    window.location.reload();
+    // window.location.reload();
     return <div></div>
   }
 
