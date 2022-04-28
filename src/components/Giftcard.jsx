@@ -119,8 +119,6 @@ const giftCard = (props) => {
   async function saveTextFields() {
     const obj = [textFieldOne, textFieldTwo, textFieldThree, textFieldFour, textFieldFive, textFieldSix, textFieldSeven, textFieldEight, textFieldNine]
     deliveryInstructionsDeleteApi(obj)
-    // obj.map((textField, i) => {deliveryInstructionsApi({index: i, field: textField})})
-    
   }
 
   function deliveryInstructionsDeleteApi(obj) {
@@ -143,20 +141,17 @@ const giftCard = (props) => {
   return (
     <>
     <Page>
-     
-    <Layout>
+      <Layout>
+        <Layout.Section>
+          <ResourcePicker
+            resourceType="Collection"
+            selectMultiple={false}
+            open={modal.open}
+            onCancel={() =>  setModal({open: false}) }
+            onSelection={(resources) => handleSelection(resources)}
+          />
+        </Layout.Section>
       <Layout.Section>
-      <ResourcePicker
-          resourceType="Collection"
-          selectMultiple={false}
-          open={modal.open}
-          onCancel={() =>  setModal({open: false}) }
-          onSelection={(resources) => handleSelection(resources)}
-        />
-
-      </Layout.Section>
-
-<Layout.Section>
         {cardCollectionId ? 
           <GiftComponent cardCollectionId={cardCollectionId} collectionTitle={collectionTitle}/>
           :

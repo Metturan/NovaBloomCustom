@@ -15,7 +15,6 @@ import { AppProvider as PolarisProvider } from "@shopify/polaris";
 import translations from "@shopify/polaris/locales/en.json";
 import "@shopify/polaris/build/esm/styles.css";
 import '../styles/index.css'
-import { HomePage } from "./components/HomePage";
 import Delivery from './components/Delivery'
 import Giftcard from './components/Giftcard'
 import Upsell from './components/Upsell'
