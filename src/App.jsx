@@ -34,8 +34,7 @@ export default function App() {
         <MyProvider>
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="delivery" element={<Delivery />} />
+              <Route path="/" element={<Delivery />} />
               <Route path="giftcard" element={<Giftcard host={new URL(location).searchParams.get("host")} />} />
               <Route path="upsell" element={<Upsell />} />
               <Route path="scriptpage" element={<ScriptPage />} />
