@@ -42,7 +42,6 @@ document.head.appendChild(script);
   
   const multiStepCart = data => {
     if (baseEl) {
-      console.log("productilst", data.data[0].productList)
   
       // Check to see if cart items have tag london ONLY and set tagged to true or false
       var cartItems = Array.from(document.querySelectorAll('.cart-item'));
@@ -74,8 +73,6 @@ document.head.appendChild(script);
       function checkLondonTag(tag) {
         return tag == 'London ONLY'
       }
-
-      console.log('productList:', productList)
 
       var containerStep1 = 
         `<div class="step1-multi">
@@ -137,7 +134,6 @@ document.head.appendChild(script);
         })
         whitelistArr = postcodeGroup.postcode;
 
-        console.log(whitelistArrNoSpacesLowercase)
       }
       if (postcodeGroup.status == 'blacklisted') {
         blacklistArrNoSpacesLowercase = postcodeGroup.postcode.map(postcode => {
@@ -198,7 +194,6 @@ document.head.appendChild(script);
   }
   
   const thirdPartCart = (data) => {
-    console.log("3rd:", data.data[0].cardList.cardsId)
 
     // See if a card has been added to the cart
       var cartItems = Array.from(document.querySelectorAll('.cart-item'));
@@ -224,7 +219,7 @@ document.head.appendChild(script);
       } else {
         itemInCart = false
       }
-  
+  console.log(data)
     var containerStep3 = 
       `<div class="step3-multi">
         <h2 class="title-multi">STEP 3 - Choose card and message</h2>
@@ -286,7 +281,7 @@ document.head.appendChild(script);
       </div>`
 
       base3El.innerHTML = containerStep3
-
+        console.log('aaaaa')
         // Listen to ajax cart calls and see if card has been removed then update UI accordingly
       const open = window.XMLHttpRequest.prototype.open;
 
@@ -315,10 +310,8 @@ document.head.appendChild(script);
           data.items.forEach(item => {
             idsInCardUpsellCollection.forEach(id => {
               if (id == item.id) {
-                console.log('card is in cart')
                 itemArray.push(true);
               } else {
-                console.log('card is not in cart')
                 itemArray.push(false)
               }
             })
@@ -345,7 +338,6 @@ document.head.appendChild(script);
   }
   
   function toggle_gift_message(checkbox) {
-    console.log(checkbox.checked)
     if (checkbox.checked) {
       document.getElementById('noteToggle').style.display = 'none'
       document.getElementById('titleToggle').style.display = 'none'
@@ -356,7 +348,6 @@ document.head.appendChild(script);
   }
   
   function toggle_card(checkbox) {
-    console.log(checkbox.checked)
     if (checkbox.checked) {
       document.getElementById('cardToggle').style.display = 'none'
       document.getElementById('nomessageClick').style.display = 'none'
@@ -373,7 +364,6 @@ document.head.appendChild(script);
   }
   
   var deliveryOptionsSelect = (data) => {
-    console.log(data)
     var deliveryOptionsContainer = 
      `<select id="deliverySelect">
         <option selected disabled>Select one</option>
@@ -389,7 +379,6 @@ document.head.appendChild(script);
   }
   
   var occasionOptionsSelect = (data) => {
-    console.log(data)
     var occasionOptionsContainer = 
      `<select id="occasionSelect">
         <option selected disabled>Select one</option>
@@ -495,7 +484,6 @@ document.head.appendChild(script);
   
   function one_click_next() {
     if (localStorage.getItem('deliveryDate')) {
-      console.log('clicked')
       baseEl.style.display = "none";
       base2El.style.display = "block"
       removeCurrentHighlightTimeline();
@@ -530,19 +518,16 @@ document.head.appendChild(script);
     jQuery.post('/cart/add.js', {
       items: arrOfProds
     }, function() {
-      console.log('success, window reload')
       localStorage.setItem('cartUpsell', true)
       window.location.reload()
     });
   }
 
   function three_click_addCart(id) {
-    console.log("id:", id)
   
     jQuery.post('/cart/add.js', {
       items: [{quantity: 1, id: id}]
     }, function() {
-      console.log('success, window reload')
       localStorage.setItem('cardUpsell', true)
       window.location.reload()
     });
@@ -743,7 +728,6 @@ document.head.appendChild(script);
                     closeModalUpsell()
                     return false;
                   } else {
-                    console.log('nothing')
                     return true
                   }
                 })
@@ -795,10 +779,8 @@ document.head.appendChild(script);
     let postcodeMsg = document.getElementById('postcode-msg')
     let lowerRung = document.getElementById('lower-rung-sidebar')
 
-    console.log(value)
 
     if (blacklistArrNoSpacesLowercase.find(checkpostcodeList)) {
-      console.log('matches blacklist')
       postcodeMsg.classList.add('black')
       postcodeMsg.classList.remove('white')
       postcodeMsg.innerHTML = "invalid"
@@ -807,7 +789,6 @@ document.head.appendChild(script);
       localStorage.setItem("postcode", '')
 
     } else if (whitelistArrNoSpacesLowercase.find(checkpostcodeList)) {
-      console.log('matches whitelist')
       postcodeMsg.innerHTML = "valid"
       postcodeMsg.classList.add('white')
       postcodeMsg.classList.remove('black')
@@ -850,13 +831,11 @@ document.head.appendChild(script);
 
     function checkResult(result) {
       if (result) {
-        console.log('valid postcode')
         postcodeMsg.innerHTML = "valid"
         postcodeMsg.classList.add('white')
         postcodeMsg.classList.remove('black')
         lowerRung.classList.add('show')
       } else {
-        console.log('invalid postcode')
         postcodeMsg.classList.add('black')
         postcodeMsg.classList.remove('white')
         postcodeMsg.innerHTML = "invalid"
@@ -871,6 +850,11 @@ document.head.appendChild(script);
   var confirmDeliveryInput;
   var confirmDeliverySidebarValue;
   var homeCollectionATCBtns;
+
+  function setExpiryDate(delivery_date) {
+    var expiryDate = new Date(new Date(delivery_date).getTime() + 60 * 60 * 24 * 1000)
+    localStorage.setItem('expiryDate', expiryDate)
+  }
   
   function click_confirmBtn() {
     slideoutContainer.classList.remove('open')
@@ -884,6 +868,7 @@ document.head.appendChild(script);
       
       delivery_date = confirmDeliverySidebarValue
       localStorage.setItem('deliveryDate', delivery_date)
+      setExpiryDate(delivery_date)
 
       // remove validation in put if exists
       var nextOneValidation = document.getElementById('next-one-validation')
@@ -905,7 +890,6 @@ document.head.appendChild(script);
       fetch('/cart.js')
       .then(response => response.json())
       .then(data => { 
-        console.log(data);
         fourthPartCart(delivery_date, data.item_count);
       });
      }
@@ -975,8 +959,7 @@ document.head.appendChild(script);
         items: itemsArr,
         attributes: {...notesArr}
       }, function(results) {
-        console.log('success, window reload', results)
-        console.log('send to checkout')
+
   
         window.location.href = '/checkout'
   
@@ -1024,7 +1007,7 @@ document.head.appendChild(script);
   
   // cart flow - run on cart page
   if (baseEl) {
-    fetch('https://nameless-caverns-60814.herokuapp.com/api/postcode?shop=extestdevstore.myshopify.com')
+    fetch('https://nameless-caverns-60814.herokuapp.com/api/postcode?shop=nova-blooms-uk.myshopify.com')
     .then(res => res.json())
     .then(data2 => {
   
@@ -1036,46 +1019,29 @@ document.head.appendChild(script);
     checkIfCardAdded()
 
     // Grab second step (naming is backward)
-    fetch('https://nameless-caverns-60814.herokuapp.com/api/products?shop=extestdevstore.myshopify.com')
+    fetch('https://nameless-caverns-60814.herokuapp.com/api/products?shop=nova-blooms-uk.myshopify.com')
     .then(res => res.json())
     .then(async data => {
       multiStepCart(data)
       calendarInit();
-      // var hour = new Date().getHours();
-      // $("#twodate").datepicker({ 
-      //   minDate: hour >= 17 ? "+2D" : "+1D", 
-      //   // maxDate: "+1M +10D", 
-      //   beforeShow: function (input, inst) {
-      //     var rect = input.getBoundingClientRect();
-      //     setTimeout(function () {
-      //       inst.dpDiv.css({ top: rect.top + 44 });
-      //     }, 0);
-      //   },
-      //   beforeShowDay: $.datepicker.noWeekends 
-      // });
-      // $("#twodate").datepicker("option", "dateFormat", "DD, d MM, yy")
 
-      // if (localStorage.getItem('deliveryDate')) {
-      //   // Show calendar in sidebar if postcode has already been validated
-      //   document.getElementById("lower-rung-sidebar").classList.add('show')
-      //   document.getElementById("twodate").value = localStorage.getItem('deliveryDate')
-      // }
-
+      
       // grab card products and render them to third step
-      fetch('https://nameless-caverns-60814.herokuapp.com/api/cardProducts?shop=extestdevstore.myshopify.com')
+      fetch('https://nameless-caverns-60814.herokuapp.com/api/cardProducts?shop=nova-blooms-uk.myshopify.com')
         .then(res => res.json())
         .then(async data => {
             // Render 3rd UI
+            console.log('is running? third')
             thirdPartCart(data)
             getProductsInfoForUpsell()
   
-            fetch('https://nameless-caverns-60814.herokuapp.com/api/deliveryInstructions?shop=extestdevstore.myshopify.com')
+            fetch('https://nameless-caverns-60814.herokuapp.com/api/deliveryInstructions?shop=nova-blooms-uk.myshopify.com')
               .then(res => res.json())
               .then(async data => {
                 deliveryOptionsSelect(data)
                 cloneCartCheckoutButton()
 
-                fetch('https://nameless-caverns-60814.herokuapp.com/api/occasion?shop=extestdevstore.myshopify.com')
+                fetch('https://nameless-caverns-60814.herokuapp.com/api/occasion?shop=nova-blooms-uk.myshopify.com')
                   .then(res => res.json())
                   .then(async data => {
                     occasionOptionsSelect(data)
@@ -1085,7 +1051,6 @@ document.head.appendChild(script);
                       fetch('/cart.js')
                       .then(response => response.json())
                       .then(data => { 
-                        console.log(data);
                         fourthPartCart(localStorage.getItem('deliveryDate'), data.item_count);
                       });
                     }
@@ -1093,6 +1058,7 @@ document.head.appendChild(script);
                   })
               })   
         })
+        .catch(err => console.log(err))
       })
     })  
     .catch(err => {console.log(err)})
@@ -1115,7 +1081,7 @@ document.head.appendChild(script);
   if (body.classList.contains('template-index') || body.classList.contains('template-collection')) {
  // home/collection page flow - run on those templates
 
-    fetch('https://nameless-caverns-60814.herokuapp.com/api/postcode?shop=extestdevstore.myshopify.com')
+    fetch('https://nameless-caverns-60814.herokuapp.com/api/postcode?shop=nova-blooms-uk.myshopify.com')
       .then(res => res.json())
       .then(data2 => {
         setupPostcodeArrays(data2);
@@ -1128,7 +1094,7 @@ document.head.appendChild(script);
 
 // product page flow
   if (body.classList.contains('template-product')) {
-    fetch('https://nameless-caverns-60814.herokuapp.com/api/postcode?shop=extestdevstore.myshopify.com')
+    fetch('https://nameless-caverns-60814.herokuapp.com/api/postcode?shop=nova-blooms-uk.myshopify.com')
       .then(res => res.json())
       .then(data2 => {
         setupPostcodeArrays(data2);

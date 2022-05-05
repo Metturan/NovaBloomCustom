@@ -63,7 +63,7 @@ function GiftComponent (props) {
   console.log(data.nodes)
   if (data.nodes[0] === null) {
     // window.location.reload();
-    return <div>hhh</div>
+    return <div></div>
   }
 
   var productList = data.nodes[0].products.edges

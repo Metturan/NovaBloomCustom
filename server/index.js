@@ -243,6 +243,21 @@ export async function createServer(
         console.log(err)
       }
     })
+
+    app.get("/api/cardProducts", async (req,res) => {
+      try {
+        let cardProductsFromDB = await MongoCardProduct.find({});
+  
+        let body = {
+          status: 'Success',
+          data: cardProductsFromDB
+        }
+        
+        res.status(200).send(body)
+      } catch(error) {
+        console.log(error)
+      }
+    })
   
     app.get("/api/collectionUpsell", async (req,res) => {
       try {
