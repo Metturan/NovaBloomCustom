@@ -102,6 +102,24 @@ export async function createServer(
     const MongoCardProduct = mongoose.model('cardProducts')
     const MongoDeliveryInstructions = mongoose.model('deliveryOptions')
     const MongoOccasions = mongoose.model('occasionOptions')
+
+    app.post("/api/collectionUpdate", verifyRequest(app), async (req, res) => {
+      try {
+        var jsonString = '';
+  
+          req.on('data', function (data) {
+              jsonString += data;
+          });
+  
+          req.on('end', async function () {
+            var body = JSON.parse(jsonString);
+            console.log('requestJSON', body)
+          });
+
+      } catch(err) {
+        console.log('error', err)
+      }
+    })
   
     app.get("/api/deliveryInstructions", async (req, res) => {
       try {

@@ -281,7 +281,6 @@ document.head.appendChild(script);
       </div>`
 
       base3El.innerHTML = containerStep3
-        console.log('aaaaa')
         // Listen to ajax cart calls and see if card has been removed then update UI accordingly
       const open = window.XMLHttpRequest.prototype.open;
 
@@ -783,13 +782,13 @@ document.head.appendChild(script);
     if (blacklistArrNoSpacesLowercase.find(checkpostcodeList)) {
       postcodeMsg.classList.add('black')
       postcodeMsg.classList.remove('white')
-      postcodeMsg.innerHTML = "invalid"
+      postcodeMsg.innerHTML = "Sorry, we don't deliver to your postcode."
       lowerRung.classList.remove('show')
 
       localStorage.setItem("postcode", '')
 
     } else if (whitelistArrNoSpacesLowercase.find(checkpostcodeList)) {
-      postcodeMsg.innerHTML = "valid"
+      postcodeMsg.innerHTML = "Good news, we can deliver to your postcode."
       postcodeMsg.classList.add('white')
       postcodeMsg.classList.remove('black')
       lowerRung.classList.add('show')
@@ -831,14 +830,14 @@ document.head.appendChild(script);
 
     function checkResult(result) {
       if (result) {
-        postcodeMsg.innerHTML = "valid"
+        postcodeMsg.innerHTML = "Good news, we can deliver to your postcode."
         postcodeMsg.classList.add('white')
         postcodeMsg.classList.remove('black')
         lowerRung.classList.add('show')
       } else {
         postcodeMsg.classList.add('black')
         postcodeMsg.classList.remove('white')
-        postcodeMsg.innerHTML = "invalid"
+        postcodeMsg.innerHTML = "Sorry, we don't deliver to your postcode."
         lowerRung.classList.remove('show')
 
         localStorage.setItem("postcode", '')
@@ -925,9 +924,9 @@ document.head.appendChild(script);
     var cardOptionalCheckbox = document.getElementById('nocardreq');
     var messageOptionalCheckbox = document.getElementById('nonotereq');
     var deliveryInstructionsSelect = document.getElementById('deliverySelect')
-    var occasionSelect = document.getElementById('occasionSelect')
+    // var occasionSelect = document.getElementById('occasionSelect')
     var cardMessage = document.querySelector('.giftnote')
-    var occasionValue = occasionSelect.options[deliveryInstructionsSelect.selectedIndex].text
+    // var occasionValue = occasionSelect.options[deliveryInstructionsSelect.selectedIndex].text
     var deliveryInstructionsValue = deliveryInstructionsSelect.options[deliveryInstructionsSelect.selectedIndex].text
     var itemsArr = []
     var notesArr = []
@@ -944,22 +943,25 @@ document.head.appendChild(script);
     // check is no message is clicked
     if (!messageOptionalCheckbox.checked) {
       if (cardMessage.value.length > 1) {
-        notesArr.push({"CardMessage": cardMessage.value})
+        notesArr.push({"_giftcard_message": cardMessage.value})
       }
     }
   
     // take selected delivery instruction and add to note obj
-    notesArr.push({"DeliveryInstructions": deliveryInstructionsValue}, {"Occasion": occasionValue})
+    notesArr.push({"DeliveryInstructions": deliveryInstructionsValue})
+    notesArr.push({'delivery_date': localStorage.getItem('deliveryDate')})
   
   
     // if card is selected and has message
-    if (addedCardId && cardMessage.value.length > 1) {
+    if (addedCardId) {
+      // card and message is written
+      notesArr.push({'_gitftcard_order': true})
       // card and message is written
       jQuery.post('/cart/add.js', {
         items: itemsArr,
         attributes: {...notesArr}
       }, function(results) {
-
+        console.log('success, send tp checkout', results)
   
         window.location.href = '/checkout'
   
@@ -968,6 +970,18 @@ document.head.appendChild(script);
           //   console.log(data)
           // })
   
+      });
+    } else {
+      // no gift card added
+      notesArr.push({'_gitftcard_order': false})
+
+      jQuery.post('/cart/update.js', {
+        attributes: {...notesArr}
+      }, function(results) {
+        console.log('success, send tp checkout', results)
+  
+        window.location.href = '/checkout'
+
       });
     }
   }
@@ -1031,7 +1045,6 @@ document.head.appendChild(script);
         .then(res => res.json())
         .then(async data => {
             // Render 3rd UI
-            console.log('is running? third')
             thirdPartCart(data)
             getProductsInfoForUpsell()
   
@@ -1041,10 +1054,10 @@ document.head.appendChild(script);
                 deliveryOptionsSelect(data)
                 cloneCartCheckoutButton()
 
-                fetch('https://nameless-caverns-60814.herokuapp.com/api/occasion?shop=nova-blooms-uk.myshopify.com')
-                  .then(res => res.json())
-                  .then(async data => {
-                    occasionOptionsSelect(data)
+                // fetch('https://nameless-caverns-60814.herokuapp.com/api/occasion?shop=nova-blooms-uk.myshopify.com')
+                //   .then(res => res.json())
+                //   .then(async data => {
+                    // occasionOptionsSelect(data)
 
                     // if delivery date in localstorage already initialize base4el
                     if (localStorage.getItem('deliveryDate')) {
@@ -1055,7 +1068,7 @@ document.head.appendChild(script);
                       });
                     }
 
-                  })
+                  // })
               })   
         })
         .catch(err => console.log(err))
