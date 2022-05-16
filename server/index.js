@@ -105,16 +105,18 @@ export async function createServer(
 
     app.get("/api/collectionUpdate", verifyRequest(app), async (req, res) => {
       try {
-        var jsonString = '';
+        // var jsonString = '';
   
-          req.on('data', function (data) {
-              jsonString += data;
-          });
+        //   req.on('data', function (data) {
+        //       jsonString += data;
+        //   });
   
-          req.on('end', async function () {
-            var body = JSON.parse(jsonString);
-            console.log('requestJSON', body)
-          });
+        //   req.on('end', async function () {
+        //     var body = JSON.parse(jsonString);
+        //     console.log('requestJSON', body)
+        //   });
+        console.log('running webhook', req)
+        res.status(200).send()
 
       } catch(err) {
         console.log('error', err)
