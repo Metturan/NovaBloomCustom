@@ -103,25 +103,25 @@ export async function createServer(
     const MongoDeliveryInstructions = mongoose.model('deliveryOptions')
     const MongoOccasions = mongoose.model('occasionOptions')
 
-    app.get("/api/collectionUpdate", verifyRequest(app), async (req, res) => {
-      try {
-        // var jsonString = '';
+    // app.get("/api/collectionUpdate", verifyRequest(app), async (req, res) => {
+    //   try {
+    //     var jsonString = '';
   
-        //   req.on('data', function (data) {
-        //       jsonString += data;
-        //   });
+    //       req.on('data', function (data) {
+    //           jsonString += data;
+    //       });
   
-        //   req.on('end', async function () {
-        //     var body = JSON.parse(jsonString);
-        //     console.log('requestJSON', body)
-        //   });
-        console.log('running webhook', req)
-        res.status(200).send()
+    //       req.on('end', async function () {
+    //         var body = JSON.parse(jsonString);
+    //         console.log('requestJSON', body)
+    //       });
+    //     console.log('running webhook', req)
+    //     res.status(200).send()
 
-      } catch(err) {
-        console.log('error', err)
-      }
-    })
+    //   } catch(err) {
+    //     console.log('error', err)
+    //   }
+    // })
   
     app.get("/api/deliveryInstructions", async (req, res) => {
       try {
