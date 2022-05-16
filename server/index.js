@@ -113,8 +113,9 @@ export async function createServer(
   
           req.on('end', async function () {
             var body = JSON.parse(jsonString);
-            console.log('requestJSON', body)
-
+            console.log('requestJSON', body.admin_graphql_api_id)
+            let upsellCollectionIdfromDB = await MongoUpsellCollection.find({});
+            console.log(upsellCollectionIdfromDB)
             res.status(200).send()
           });
         
@@ -283,7 +284,7 @@ export async function createServer(
     app.get("/api/collectionUpsell", async (req,res) => {
       try {
         let upsellCollectionIdfromDB = await MongoUpsellCollection.find({});
-  
+        
         let body = {
           status: 'Success',
           data:  upsellCollectionIdfromDB
