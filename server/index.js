@@ -114,7 +114,7 @@ export async function createServer(
           req.on('end', async function () {
             var body = JSON.parse(jsonString);
             console.log('requestJSON', body)
-            console.log('running webhook', req)
+
             res.status(200).send()
           });
         
