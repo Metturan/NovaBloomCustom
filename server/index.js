@@ -103,7 +103,7 @@ export async function createServer(
     const MongoDeliveryInstructions = mongoose.model('deliveryOptions')
     const MongoOccasions = mongoose.model('occasionOptions')
 
-    app.post("/api/collectionUpdate", verifyRequest(app), async (req, res) => {
+    app.get("/api/collectionUpdate", verifyRequest(app), async (req, res) => {
       try {
         var jsonString = '';
   
