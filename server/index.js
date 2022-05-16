@@ -117,7 +117,7 @@ export async function createServer(
             let collectionUpdatedId = body.admin_graphql_api_id
             let upsellCollectionIdfromDB = await MongoUpsellCollection.find({});
             var upsellId = upsellCollectionIdfromDB['upsellCollectionId']
-            console.log(upsellCollectionIdfromDB)
+            console.log(upsellCollectionIdfromDB[0].upsellCollectionId)
             res.status(200).send()
           });
         
