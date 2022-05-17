@@ -126,14 +126,15 @@ export async function createServer(
             if (collectionUpdatedId == upsellCollectionIdfromDB[0].upsellCollectionId) {
               console.log('checking match')
               const session = await Shopify.Utils.loadCurrentSession(req,res);
-              const client = new Shopify.Clients.Rest(
-                session.shop,
-                session.accessToken
-              );
-              const collection = await client.get({
-                path: `collections/${upsellIdString}`
-              });
-              console.log('collection', collection)
+              console.log('session', session)
+              // const client = new Shopify.Clients.Rest(
+              //   session.shop,
+              //   session.accessToken
+              // );
+              // const collection = await client.get({
+              //   path: `collections/${upsellIdString}`
+              // });
+              // console.log('collection', collection)
             }
 
             res.status(200).send()
