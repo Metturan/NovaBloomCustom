@@ -117,7 +117,7 @@ export async function createServer(
   
           req.on('end', async function () {
             var body = JSON.parse(jsonString);
-            console.log(body)
+            console.log('shop', req.query.shop)
             let collectionUpdatedId = body.admin_graphql_api_id
             let upsellCollectionIdfromDB = await MongoUpsellCollection.find({});
             var upsellId = upsellCollectionIdfromDB[0].upsellCollectionId.split('/')
