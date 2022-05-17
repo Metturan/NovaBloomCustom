@@ -107,7 +107,7 @@ export async function createServer(
     const MongoDeliveryInstructions = mongoose.model('deliveryOptions')
     const MongoOccasions = mongoose.model('occasionOptions')
 
-    app.post("/api/collectionUpdate", verifyRequest(app), async (req, res) => {
+    app.post("/api/collectionUpdate", async (req, res) => {
       try {
         var jsonString = '';
   
@@ -117,6 +117,7 @@ export async function createServer(
   
           req.on('end', async function () {
             var body = JSON.parse(jsonString);
+            console.log(body)
             let collectionUpdatedId = body.admin_graphql_api_id
             let upsellCollectionIdfromDB = await MongoUpsellCollection.find({});
             var upsellId = upsellCollectionIdfromDB[0].upsellCollectionId.split('/')
