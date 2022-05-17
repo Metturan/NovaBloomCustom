@@ -2,6 +2,7 @@
 import { resolve } from "path";
 import express from "express";
 import cookieParser from "cookie-parser";
+import axios from 'axios'
 import { Shopify, ApiVersion } from "@shopify/shopify-api";
 import "dotenv/config";
 
@@ -106,7 +107,7 @@ export async function createServer(
     const MongoDeliveryInstructions = mongoose.model('deliveryOptions')
     const MongoOccasions = mongoose.model('occasionOptions')
 
-    app.post("/api/collectionUpdate", async (req, res) => {
+    app.post("/api/collectionUpdate", verifyRequest(app), async (req, res) => {
       try {
         var jsonString = '';
   
@@ -119,9 +120,8 @@ export async function createServer(
             let collectionUpdatedId = body.admin_graphql_api_id
             let upsellCollectionIdfromDB = await MongoUpsellCollection.find({});
             var upsellId = upsellCollectionIdfromDB[0].upsellCollectionId.split('/')
-            var upsellIdString = upsellId[upsellId.length - 1]
-            console.log('collectionupdateId', collectionUpdatedId)
-            console.log('upsellId', upsellId)
+            // var upsellIdString = upsellId[upsellId.length - 1]
+
             // collection upsell update
             if (collectionUpdatedId == upsellCollectionIdfromDB[0].upsellCollectionId) {
               console.log('checking match')
