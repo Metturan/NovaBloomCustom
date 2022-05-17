@@ -21,6 +21,8 @@ import '../models/Occassions.js'
 
 // import { updateThemeLiquid } from './theme/updateTheme.js'
 
+
+
 const USE_ONLINE_TOKENS = true;
 const TOP_LEVEL_OAUTH_COOKIE = "shopify_top_level_oauth";
 
@@ -94,6 +96,7 @@ export async function createServer(
     }
   });
 
+
     // Start of my code
     const MongoProduct = mongoose.model('products')
     const MongoPostcode = mongoose.model('postalcode')
@@ -113,11 +116,24 @@ export async function createServer(
   
           req.on('end', async function () {
             var body = JSON.parse(jsonString);
-            console.log('requestJSON', body.admin_graphql_api_id)
             let collectionUpdatedId = body.admin_graphql_api_id
             let upsellCollectionIdfromDB = await MongoUpsellCollection.find({});
-            var upsellId = upsellCollectionIdfromDB['upsellCollectionId']
-            console.log(upsellCollectionIdfromDB[0].upsellCollectionId)
+            var upsellId = upsellCollectionIdfromDB[0].upsellCollectionId.split('/')
+            var upsellIdString = upsellId[upsellId.length - 1]
+            
+            // collection upsell update
+            if (collectionUpdatedId == upsellId) {
+              const session = await Shopify.Utils.loadCurrentSession(req,res);
+              const client = new Shopify.Clients.Rest(
+                session.shop,
+                session.accessToken
+              );
+              const collection = await client.get({
+                path: `collections/${upsellIdString}`
+              });
+              console.log('collection', collection)
+            }
+
             res.status(200).send()
           });
         
