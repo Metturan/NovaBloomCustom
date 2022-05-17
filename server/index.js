@@ -120,7 +120,8 @@ export async function createServer(
             let upsellCollectionIdfromDB = await MongoUpsellCollection.find({});
             var upsellId = upsellCollectionIdfromDB[0].upsellCollectionId.split('/')
             var upsellIdString = upsellId[upsellId.length - 1]
-            
+            console.log('collectionupdateId', collectionUpdatedId)
+            console.log('upsellId', upsellId)
             // collection upsell update
             if (collectionUpdatedId == upsellId) {
               console.log('checking match')
