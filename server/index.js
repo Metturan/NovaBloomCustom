@@ -123,7 +123,7 @@ export async function createServer(
             console.log('collectionupdateId', collectionUpdatedId)
             console.log('upsellId', upsellId)
             // collection upsell update
-            if (collectionUpdatedId == upsellId) {
+            if (collectionUpdatedId == upsellCollectionIdfromDB[0].upsellCollectionId) {
               console.log('checking match')
               const session = await Shopify.Utils.loadCurrentSession(req,res);
               const client = new Shopify.Clients.Rest(
