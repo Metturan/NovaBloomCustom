@@ -109,8 +109,8 @@ export async function createServer(
     const MongoOccasions = mongoose.model('occasionOptions')
 
     app.post("/api/collectionUpdate", async (req, res) => {
-      const session = await Shopify.Utils.loadOfflineSession('nova-blooms-uk.myshopify.com')
-      console.log('SESSION', session)
+      const id = Shopify.Auth.getCurrentSessionId(req,res, true)
+      console.log('SESSION', id)
       try {
 
         var jsonString = '';
