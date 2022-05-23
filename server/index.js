@@ -472,10 +472,10 @@ export async function createServer(
     next();
   });
 
-  app.use("/*", (req, res, next) => {
+  app.use("/*", async (req, res, next) => {
     const { shop } = req.query;
     console.log('asdf', shop)
-    const id = Shopify.Auth.getCurrentSessionId(req,res, true)
+    const id = await Shopify.Utils.loadCurrentSession(req,res, true)
     console.log('IDD', id)
     // updateThemeLiquid(shop, req.query.host, process.env.SHOPIFY_API_KEY)
     // Detect whether we need to reinstall the app, any request from Shopify will
