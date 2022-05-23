@@ -110,14 +110,14 @@ export async function createServer(
     app.post("/api/collectionUpdate", async (req, res) => {
       try {
         var jsonString = '';
-          console.log('SHOPP', req.query.shop)
+
           req.on('data', function (data) {
               jsonString += data;
           });
   
           req.on('end', async function () {
             var body = JSON.parse(jsonString);
-            // console.log('shop', req.query.shop)
+
             let collectionUpdatedId = body.admin_graphql_api_id
             let upsellCollectionIdfromDB = await MongoUpsellCollection.find({});
             var upsellId = upsellCollectionIdfromDB[0].upsellCollectionId.split('/')
@@ -125,9 +125,11 @@ export async function createServer(
 
             // collection upsell update
             if (collectionUpdatedId == upsellCollectionIdfromDB[0].upsellCollectionId) {
+
               console.log('checking match')
-              // const session = await Shopify.Utils.loadCurrentSession(req,res);
-              // console.log('session', session)
+
+              const session = await Shopify.Utils.loadOfflineSession('nova-blooms-uk.myshopify.com');
+              console.log('SESSION', session)
               // const client = new Shopify.Clients.Rest(
               //   session.shop,
               //   session.accessToken
