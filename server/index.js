@@ -110,7 +110,7 @@ export async function createServer(
     app.post("/api/collectionUpdate", async (req, res) => {
       try {
         var jsonString = '';
-          console.log(req)
+          console.log('SHOPP', req.query.shop)
           req.on('data', function (data) {
               jsonString += data;
           });
@@ -477,6 +477,7 @@ export async function createServer(
 
   app.use("/*", (req, res, next) => {
     const { shop } = req.query;
+    console.log('asdf', shop)
     // updateThemeLiquid(shop, req.query.host, process.env.SHOPIFY_API_KEY)
     // Detect whether we need to reinstall the app, any request from Shopify will
     // include a shop in the query parameters.
