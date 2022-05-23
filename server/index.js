@@ -128,16 +128,10 @@ export async function createServer(
 
               console.log('checking match')
 
-              const session = await Shopify.Utils.loadOfflineSession('nova-blooms-uk.myshopify.com');
-              console.log('SESSION', session)
-              // const client = new Shopify.Clients.Rest(
-              //   session.shop,
-              //   session.accessToken
-              // );
-              // const collection = await client.get({
-              //   path: `collections/${upsellIdString}`
-              // });
-              // console.log('collection', collection)
+              // const session = await Shopify.Utils.loadOfflineSession('nova-blooms-uk.myshopify.com');
+              // console.log('SESSION', session)
+              axios.post('/api/collectionUpsell', collectionUpdatedId)
+                .then(res => {console.log(res)});
             }
 
             res.status(200).send()
