@@ -129,9 +129,13 @@ export async function createServer(
               console.log('checking match')
 
               // const session = await Shopify.Utils.loadOfflineSession('nova-blooms-uk.myshopify.com');
-              // console.log('SESSION', session)
-              axios.post('https://nameless-caverns-60814.herokuapp.com/api/collectionUpsell', collectionUpdatedId)
-                .then(res => {console.log(res)});
+              const session = await Shopify.Utils.loadCurrentSession(
+                req,
+                res
+              );
+              console.log('SESSION', session)
+
+
             }
 
             res.status(200).send()
