@@ -109,10 +109,7 @@ export async function createServer(
 
     app.post("/api/collectionUpdate", async (req, res) => {
       try {
-        const session = await Shopify.Utils.loadCurrentSession(
-          req,
-          res
-        );
+        const session = await Shopify.Utils.loadOfflineSession('nova-blooms-uk.myshopify.com')
         console.log('SESSION', session)
         var jsonString = '';
 
