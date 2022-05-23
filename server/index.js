@@ -126,8 +126,8 @@ export async function createServer(
             // collection upsell update
             if (collectionUpdatedId == upsellCollectionIdfromDB[0].upsellCollectionId) {
               console.log('checking match')
-              const session = await Shopify.Utils.loadCurrentSession(req,res);
-              console.log('session', session)
+              // const session = await Shopify.Utils.loadCurrentSession(req,res);
+              // console.log('session', session)
               // const client = new Shopify.Clients.Rest(
               //   session.shop,
               //   session.accessToken

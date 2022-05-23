@@ -146,29 +146,12 @@ document.head.appendChild(script);
     })
   }
   
+  var furthestLeadDays = 0;
+  var furthestDate;
+
   const secondPartCart = data => {
     if (baseEl) {
-  
-      // data.data.forEach(postcodeGroup => {
-      //   if (postcodeGroup.status == 'whitelisted') {
-          
-      //     whitelistArrNoSpacesLowercase = postcodeGroup.postcode.map(postcode => {
-      //       var postcodeNoSpaces = postcode.replace(/\s/g, ``);
-      //       return postcodeNoSpaces.toLowerCase()
-      //     })
-      //     whitelistArr = postcodeGroup.postcode;
-
-      //     console.log(whitelistArrNoSpacesLowercase)
-      //   }
-      //   if (postcodeGroup.status == 'blacklisted') {
-      //     blacklistArrNoSpacesLowercase = postcodeGroup.postcode.map(postcode => {
-      //       var postcodeNoSpaces = postcode.replace(/\s/g, ``);
-      //       return postcodeNoSpaces.toLowerCase()
-      //     })
-
-      //     blacklistArr = postcodeGroup.postcode;
-      //   }
-      // })
+      
       setupPostcodeArrays(data);
     
       var containerStep2 = 
@@ -176,7 +159,7 @@ document.head.appendChild(script);
         <h2 style="margin-bottom: 23px;padding-top:23px;" class="title-multi">STEP 1 - choose delivery</h2>
         <div class="inner-step-container">
           <div style="margin-bottom: 7px;">
-            <button onclick="click_delivery_input()" class="delivery-button"><span class="button-title">Select Delivery Date</span><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 122.88 122.88" style="enable-background:new 0 0 122.88 122.88" xml:space="preserve"><g><path d="M81.61,4.73c0-2.61,2.58-4.73,5.77-4.73c3.19,0,5.77,2.12,5.77,4.73v20.72c0,2.61-2.58,4.73-5.77,4.73 c-3.19,0-5.77-2.12-5.77-4.73V4.73L81.61,4.73z M66.11,103.81c-0.34,0-0.61-1.43-0.61-3.2c0-1.77,0.27-3.2,0.61-3.2H81.9 c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H66.11L66.11,103.81z M15.85,67.09c-0.34,0-0.61-1.43-0.61-3.2 c0-1.77,0.27-3.2,0.61-3.2h15.79c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H15.85L15.85,67.09z M40.98,67.09 c-0.34,0-0.61-1.43-0.61-3.2c0-1.77,0.27-3.2,0.61-3.2h15.79c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H40.98 L40.98,67.09z M66.11,67.09c-0.34,0-0.61-1.43-0.61-3.2c0-1.77,0.27-3.2,0.61-3.2H81.9c0.34,0,0.61,1.43,0.61,3.2 c0,1.77-0.27,3.2-0.61,3.2H66.11L66.11,67.09z M91.25,67.09c-0.34,0-0.61-1.43-0.61-3.2c0-1.77,0.27-3.2,0.61-3.2h15.79 c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H91.25L91.25,67.09z M15.85,85.45c-0.34,0-0.61-1.43-0.61-3.2 c0-1.77,0.27-3.2,0.61-3.2h15.79c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H15.85L15.85,85.45z M40.98,85.45 c-0.34,0-0.61-1.43-0.61-3.2c0-1.77,0.27-3.2,0.61-3.2h15.79c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H40.98 L40.98,85.45z M66.11,85.45c-0.34,0-0.61-1.43-0.61-3.2c0-1.77,0.27-3.2,0.61-3.2H81.9c0.34,0,0.61,1.43,0.61,3.2 c0,1.77-0.27,3.2-0.61,3.2H66.11L66.11,85.45z M91.25,85.45c-0.34,0-0.61-1.43-0.61-3.2c0-1.77,0.27-3.2,0.61-3.2h15.79 c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H91.25L91.25,85.45z M15.85,103.81c-0.34,0-0.61-1.43-0.61-3.2 c0-1.77,0.27-3.2,0.61-3.2h15.79c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H15.85L15.85,103.81z M40.98,103.81 c-0.34,0-0.61-1.43-0.61-3.2c0-1.77,0.27-3.2,0.61-3.2h15.79c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H40.98 L40.98,103.81z M29.61,4.73c0-2.61,2.58-4.73,5.77-4.73s5.77,2.12,5.77,4.73v20.72c0,2.61-2.58,4.73-5.77,4.73 s-5.77-2.12-5.77-4.73V4.73L29.61,4.73z M6.4,45.32h110.07V21.47c0-0.8-0.33-1.53-0.86-2.07c-0.53-0.53-1.26-0.86-2.07-0.86H103 c-1.77,0-3.2-1.43-3.2-3.2c0-1.77,1.43-3.2,3.2-3.2h10.55c2.57,0,4.9,1.05,6.59,2.74c1.69,1.69,2.74,4.02,2.74,6.59v27.06v65.03 c0,2.57-1.05,4.9-2.74,6.59c-1.69,1.69-4.02,2.74-6.59,2.74H9.33c-2.57,0-4.9-1.05-6.59-2.74C1.05,118.45,0,116.12,0,113.55V48.52 V21.47c0-2.57,1.05-4.9,2.74-6.59c1.69-1.69,4.02-2.74,6.59-2.74H20.6c1.77,0,3.2,1.43,3.2,3.2c0,1.77-1.43,3.2-3.2,3.2H9.33 c-0.8,0-1.53,0.33-2.07,0.86c-0.53,0.53-0.86,1.26-0.86,2.07V45.32L6.4,45.32z M116.48,51.73H6.4v61.82c0,0.8,0.33,1.53,0.86,2.07 c0.53,0.53,1.26,0.86,2.07,0.86h104.22c0.8,0,1.53-0.33,2.07-0.86c0.53-0.53,0.86-1.26,0.86-2.07V51.73L116.48,51.73z M50.43,18.54 c-1.77,0-3.2-1.43-3.2-3.2c0-1.77,1.43-3.2,3.2-3.2h21.49c1.77,0,3.2,1.43,3.2,3.2c0,1.77-1.43,3.2-3.2,3.2H50.43L50.43,18.54z"/></g></svg></button>
+            <button onclick="click_delivery_input();click_cart_delivery_input(furthestLeadDays, furthestDate)" class="delivery-button"><span class="button-title">Select Delivery Date</span><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 122.88 122.88" style="enable-background:new 0 0 122.88 122.88" xml:space="preserve"><g><path d="M81.61,4.73c0-2.61,2.58-4.73,5.77-4.73c3.19,0,5.77,2.12,5.77,4.73v20.72c0,2.61-2.58,4.73-5.77,4.73 c-3.19,0-5.77-2.12-5.77-4.73V4.73L81.61,4.73z M66.11,103.81c-0.34,0-0.61-1.43-0.61-3.2c0-1.77,0.27-3.2,0.61-3.2H81.9 c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H66.11L66.11,103.81z M15.85,67.09c-0.34,0-0.61-1.43-0.61-3.2 c0-1.77,0.27-3.2,0.61-3.2h15.79c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H15.85L15.85,67.09z M40.98,67.09 c-0.34,0-0.61-1.43-0.61-3.2c0-1.77,0.27-3.2,0.61-3.2h15.79c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H40.98 L40.98,67.09z M66.11,67.09c-0.34,0-0.61-1.43-0.61-3.2c0-1.77,0.27-3.2,0.61-3.2H81.9c0.34,0,0.61,1.43,0.61,3.2 c0,1.77-0.27,3.2-0.61,3.2H66.11L66.11,67.09z M91.25,67.09c-0.34,0-0.61-1.43-0.61-3.2c0-1.77,0.27-3.2,0.61-3.2h15.79 c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H91.25L91.25,67.09z M15.85,85.45c-0.34,0-0.61-1.43-0.61-3.2 c0-1.77,0.27-3.2,0.61-3.2h15.79c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H15.85L15.85,85.45z M40.98,85.45 c-0.34,0-0.61-1.43-0.61-3.2c0-1.77,0.27-3.2,0.61-3.2h15.79c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H40.98 L40.98,85.45z M66.11,85.45c-0.34,0-0.61-1.43-0.61-3.2c0-1.77,0.27-3.2,0.61-3.2H81.9c0.34,0,0.61,1.43,0.61,3.2 c0,1.77-0.27,3.2-0.61,3.2H66.11L66.11,85.45z M91.25,85.45c-0.34,0-0.61-1.43-0.61-3.2c0-1.77,0.27-3.2,0.61-3.2h15.79 c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H91.25L91.25,85.45z M15.85,103.81c-0.34,0-0.61-1.43-0.61-3.2 c0-1.77,0.27-3.2,0.61-3.2h15.79c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H15.85L15.85,103.81z M40.98,103.81 c-0.34,0-0.61-1.43-0.61-3.2c0-1.77,0.27-3.2,0.61-3.2h15.79c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H40.98 L40.98,103.81z M29.61,4.73c0-2.61,2.58-4.73,5.77-4.73s5.77,2.12,5.77,4.73v20.72c0,2.61-2.58,4.73-5.77,4.73 s-5.77-2.12-5.77-4.73V4.73L29.61,4.73z M6.4,45.32h110.07V21.47c0-0.8-0.33-1.53-0.86-2.07c-0.53-0.53-1.26-0.86-2.07-0.86H103 c-1.77,0-3.2-1.43-3.2-3.2c0-1.77,1.43-3.2,3.2-3.2h10.55c2.57,0,4.9,1.05,6.59,2.74c1.69,1.69,2.74,4.02,2.74,6.59v27.06v65.03 c0,2.57-1.05,4.9-2.74,6.59c-1.69,1.69-4.02,2.74-6.59,2.74H9.33c-2.57,0-4.9-1.05-6.59-2.74C1.05,118.45,0,116.12,0,113.55V48.52 V21.47c0-2.57,1.05-4.9,2.74-6.59c1.69-1.69,4.02-2.74,6.59-2.74H20.6c1.77,0,3.2,1.43,3.2,3.2c0,1.77-1.43,3.2-3.2,3.2H9.33 c-0.8,0-1.53,0.33-2.07,0.86c-0.53,0.53-0.86,1.26-0.86,2.07V45.32L6.4,45.32z M116.48,51.73H6.4v61.82c0,0.8,0.33,1.53,0.86,2.07 c0.53,0.53,1.26,0.86,2.07,0.86h104.22c0.8,0,1.53-0.33,2.07-0.86c0.53-0.53,0.86-1.26,0.86-2.07V51.73L116.48,51.73z M50.43,18.54 c-1.77,0-3.2-1.43-3.2-3.2c0-1.77,1.43-3.2,3.2-3.2h21.49c1.77,0,3.2,1.43,3.2,3.2c0,1.77-1.43,3.2-3.2,3.2H50.43L50.43,18.54z"/></g></svg></button>
           </div>
           <p id="next-one-validation">Please select a delivery date to continue</p>
         </div>
@@ -187,9 +170,45 @@ document.head.appendChild(script);
   
       baseEl.innerHTML = containerStep2
 
-      if (localStorage.getItem('deliveryDate')) {
-        document.querySelector('.button-title').innerText = localStorage.getItem('deliveryDate')
+      if (document.querySelector('.button-title').innerText == 'Select Delivery Date' && localStorage.getItem('deliveryDateBeforeCartUpsellReload')) {
+        document.querySelector('.button-title').innerText = localStorage.getItem('deliveryDateBeforeCartUpsellReload')
       }
+
+      // determine furthest delivery date based on delivery dates of cart.
+      // When calendar pops up find lead of furthest date out and block calendar
+      var cartItems = Array.from(document.querySelectorAll('.cart-item'))
+      var furthestDateInt = 0;
+
+          cartItems.forEach(function(item) {
+            Object.keys(localStorage).forEach(function(key){
+              var productHand = item.dataset.cartitemhandle
+              var leadTime = parseInt(item.dataset.stickerDelivery.trim());
+              
+              var split = key.split('_')
+              if (split[1] == productHand) {
+                  if (localStorage.getItem(`deliveryDate_${productHand}`)) {
+                      if (furthestDateInt < Math.abs(new Date(localStorage.getItem(`deliveryDate_${productHand}`)))) {
+                        furthestDateInt = Math.abs(new Date(localStorage.getItem(`deliveryDate_${productHand}`)))
+                        furthestDate = localStorage.getItem(`deliveryDate_${productHand}`)
+                      }
+                      // Find furthest lead days
+                      if (furthestLeadDays < leadTime) {
+                        furthestLeadDays = leadTime
+                      }
+                  }
+              }
+
+              // Find furthest lead days
+              if (furthestLeadDays < leadTime) {
+                furthestLeadDays = leadTime
+              }
+            });
+          })
+          
+      if (furthestDate) {
+        document.querySelector('.button-title').innerHTML = furthestDate
+      }
+      console.log(furthestDate, furthestLeadDays)
     }
   }
   
@@ -219,7 +238,6 @@ document.head.appendChild(script);
       } else {
         itemInCart = false
       }
-  console.log(data)
     var containerStep3 = 
       `<div class="step3-multi">
         <h2 class="title-multi">STEP 3 - Choose card and message</h2>
@@ -294,7 +312,12 @@ document.head.appendChild(script);
               "/cart/clear.js",
             ].includes(this._url)
           ) {
-            checkCardInCart(this.response);
+            var data = JSON.parse(this.response);
+            checkCardInCart(data);
+            console.log(furthestLeadDays)
+
+            calculateFurthestLeadDay(data.item_count)
+            fourthPartCart(data.item_count)
           }
         });
         return open.apply(this, arguments);
@@ -302,8 +325,8 @@ document.head.appendChild(script);
 
       window.XMLHttpRequest.prototype.open = openReplacement;
 
-      function checkCardInCart(cartJson) {
-        var data = JSON.parse(cartJson);
+      function checkCardInCart(data) {
+        
         var itemArray = []
         if (data.items.length) {
           data.items.forEach(item => {
@@ -324,7 +347,7 @@ document.head.appendChild(script);
           }
 
           if (!isCardInCart) {
-            document.querySelector('.cartSentence').style.display = "none"
+            if (document.querySelector('.cartSentence')) {document.querySelector('.cartSentence').style.display = "none"}
             var cardAddBtns = Array.from(document.querySelectorAll('.giftcard-button'))
 
             cardAddBtns.forEach(btn => {
@@ -334,6 +357,7 @@ document.head.appendChild(script);
 
         }
       }
+
   }
   
   function toggle_gift_message(checkbox) {
@@ -391,24 +415,83 @@ document.head.appendChild(script);
   
       // document.getElementById('occasionSelectContainer').innerHTML = occasionOptionsContainer
   }
+
+  function calculateFurthestLeadDay(item_count) {
+    var cartItems = Array.from(document.querySelectorAll('.cart-item'))
+      var furthestDateInt = 0;
+
+          cartItems.forEach(function(item) {
+            Object.keys(localStorage).forEach(function(key){
+              var productHand = item.dataset.cartitemhandle
+              var leadTime = parseInt(item.dataset.stickerDelivery.trim());
+              
+              // var split = key.split('_')
+              // if (split[1] == productHand) {
+              //     if (localStorage.getItem(`deliveryDate_${productHand}`)) {
+              //         if (furthestDateInt < Math.abs(new Date(localStorage.getItem(`deliveryDate_${productHand}`)))) {
+              //           furthestDateInt = Math.abs(new Date(localStorage.getItem(`deliveryDate_${productHand}`)))
+              //           furthestDate = localStorage.getItem(`deliveryDate_${productHand}`)
+              //         }
+              //         // Find furthest lead days
+              //         if (furthestLeadDays < leadTime) {
+              //           furthestLeadDays = leadTime
+              //         }
+              //     }
+              // }
+
+              // Find furthest lead days
+              if (furthestLeadDays < leadTime) {
+                furthestLeadDays = leadTime
+              }
+            });
+          })
+  }
   
-  const fourthPartCart = (data, itemCount) => {
-      
+  const fourthPartCart = (countFromUpdateCart) => {
+      var data = document.querySelector('.button-title').innerText;
+      var itemCount = document.querySelectorAll('.cart-item').length
+      countFromUpdateCart ? itemCount = countFromUpdateCart : null
+
+      console.log(itemCount)
+
+            // determine furthest delivery date based on delivery dates of cart.
+      // When calendar pops up find lead of furthest date out and block calendar
+      var cartItems = Array.from(document.querySelectorAll('.cart-item'))
+      var furthestDateInt = 0;
+      var deliveryDateCount = 0;
+
+          cartItems.forEach(function(item) {
+            Object.keys(localStorage).forEach(function(key){
+              var productHand = item.dataset.cartitemhandle
+              var leadTime = parseInt(item.dataset.stickerDelivery.trim());
+              
+              var split = key.split('_')
+              if (split[1] == productHand) {
+                  if (localStorage.getItem(`deliveryDate_${productHand}`)) {
+                      deliveryDateCount++;
+                  }
+              }
+            });
+          })
+
+
+
       var rowBar = 
         `<div id="edit-info-container">
           <div class="leftsideEdit">
             ${itemCount > 1 ? 
-              `<div>Attention: Your cart contains items with multiple delivery dates. Delivery date is set for <strong>${data}</strong>, which is the furthest date. Click edit information to select a different date or remove some items in your cart.</div><div style="margin-top:40px;" class="editTitle">Delivery Details</div><div>Delivery date: <strong>${data}</strong></div>` 
+              `<div>Attention: ${deliveryDateCount > 1 ? 'Your cart contains items with multiple delivery dates. ' : ''}Delivery date is set for <strong id="furthestDate">${data ? data : furthestDate}</strong>${deliveryDateCount > 1 ? ', which is the furthest date' : ''}. Click edit information to select a different date or remove some items in your cart.</div><div style="margin-top:40px;" class="editTitle">Delivery Details</div><div>Delivery date: <strong id="furthestDate3">${data ? data: furthestDate}</strong></div>` 
               :
-              `<div class="editTitle">Delivery Details</div><div>Delivery date: <strong>${data}</strong></div>`
+              `<div class="editTitle">Delivery Details</div><div>Delivery date: <strong id="furthestDate2">${data ? data : furthestDate}</strong></div>`
             }
           </div>
           <div class="rightsideEdit">
-            <div onclick="click_delivery_input()" class="edit-info">Edit delivery date</div>
+            <div onclick="click_delivery_input();click_cart_delivery_input(furthestLeadDays)" class="edit-info">Edit delivery date</div>
             <button id="smallStyleBtn" onclick="four_click_prev()" class="row-btn-prev row-btn">Back</button>
           </div>
         </div>`
-  
+
+        base4El.innerHTML = ''
       base4El.innerHTML = rowBar
   }
   
@@ -482,7 +565,7 @@ document.head.appendChild(script);
   }
   
   function one_click_next() {
-    if (localStorage.getItem('deliveryDate')) {
+    if (document.querySelector('.button-title').textContent != 'Select Delivery Date') {
       baseEl.style.display = "none";
       base2El.style.display = "block"
       removeCurrentHighlightTimeline();
@@ -518,6 +601,7 @@ document.head.appendChild(script);
       items: arrOfProds
     }, function() {
       localStorage.setItem('cartUpsell', true)
+      localStorage.setItem('deliveryDateBeforeCartUpsellReload', document.querySelector('.button-title').innerText)
       window.location.reload()
     });
   }
@@ -566,8 +650,11 @@ document.head.appendChild(script);
     base3El.style.display = 'none'
     base4El.style.display = 'block'
 
+    fourthPartCart();
+
     localStorage.setItem('cartUpsell', false)
     localStorage.setItem('cardUpsell', false)
+    localStorage.removeItem('deliveryDateBeforeCartUpsellReload')
   
     document.querySelector('.timeline').style.display = 'none';
     document.querySelector('.cart-checkout').style.display = 'block';
@@ -586,6 +673,7 @@ document.head.appendChild(script);
 
     localStorage.setItem('cardUpsell', false)
     localStorage.setItem('cartUpsell', false)
+    localStorage.removeItem('deliveryDateBeforeCartUpsellReload')
   
     document.querySelector('#cart-form').scrollIntoView({ behavior: 'smooth', block: 'start'})
   }
@@ -764,9 +852,49 @@ document.head.appendChild(script);
           console.log('done');
       });
   }
+
+  function click_cart_delivery_input(furthestLeadDays, furthestDate) {
+    console.log(furthestDate)
+    if (furthestLeadDays) {
+      if (furthestLeadDays == 0) { furthestLeadDays = 1 }
+      const d = new Date();
+      let hour = d.getHours();
+      var minDateNumber = hour >= 17 ? `+${parseInt(1 + furthestLeadDays)}D` : `+${furthestLeadDays}D`
+      $("#twodate").datepicker("option", "minDate", minDateNumber);
+    }
+  }
   
-  function click_delivery_input() {
+  function click_delivery_input(btn) {
+    // show bottom rung if postcode already entered
+    if (localStorage.getItem('postcode')) {
+      document.getElementById('lower-rung-sidebar').classList.add('show')
+    }
+
+    // Make calendar dynamically block lead dates for next day, 4 day and 5 day.
+    const d = new Date();
+    let hour = d.getHours();
+    
+    if (baseEl) {
+
+
+
+    } else {
+
+      if (btn && btn.dataset.stickerDelivery.trim().length > 0) {
+        var leadDay = parseInt(btn.dataset.stickerDelivery.trim())
+        var minDateNumber = hour >= 17 ? `+${parseInt(1 + leadDay)}D` : `+${leadDay}D`
+        $("#twodate").datepicker("option", "minDate", minDateNumber);
+  
+      } else {
+        var minDateNumber = hour >= 17 ? "+2D" : "+1D"
+        $("#twodate").datepicker("option", "minDate", minDateNumber);
+      }
+
+    }
+
+
     slideoutContainer.classList.add('open');
+    document.getElementById('twodate').value = ''
   }
   
   function closeOverlay() {
@@ -816,24 +944,24 @@ document.head.appendChild(script);
         .then(res => {
           res.json().then(parsedData => {
             var result = parsedData.result
-            checkResult(result)
+            checkResult(result, value)
           })
         })
         .catch(err => console.log(err))
     }
-    
 
-  
     function checkpostcodeList(postcode) {
       return postcode == value;
     }
 
-    function checkResult(result) {
+    function checkResult(result, value) {
       if (result) {
         postcodeMsg.innerHTML = "Good news, we can deliver to your postcode."
         postcodeMsg.classList.add('white')
         postcodeMsg.classList.remove('black')
         lowerRung.classList.add('show')
+
+        localStorage.setItem("postcode", value)
       } else {
         postcodeMsg.classList.add('black')
         postcodeMsg.classList.remove('white')
@@ -850,50 +978,76 @@ document.head.appendChild(script);
   var confirmDeliverySidebarValue;
   var homeCollectionATCBtns;
 
-  function setExpiryDate(delivery_date) {
-    var expiryDate = new Date(new Date(delivery_date).getTime() + 60 * 60 * 24 * 1000)
-    localStorage.setItem('expiryDate', expiryDate)
+  function setExpiryDate(delivery_date, productHandle) {
+    var tomorrow = new Date();
+    var expiryDate = tomorrow.setDate(tomorrow.getDate()+1)
+    localStorage.setItem(`expiryDate${productHandle}`, expiryDate)
   }
   
   function click_confirmBtn() {
     slideoutContainer.classList.remove('open')
     confirmDeliverySidebarValue = document.querySelector('#twodate').value;
     confirmDeliveryInput = Array.from(document.querySelectorAll('.button-title'));
-  
-    if (confirmDeliverySidebarValue) {
-      confirmDeliveryInput.forEach(btn => {
-        btn.innerHTML = confirmDeliverySidebarValue;
-      })
-      
-      delivery_date = confirmDeliverySidebarValue
-      localStorage.setItem('deliveryDate', delivery_date)
-      setExpiryDate(delivery_date)
+    var modalInner = document.querySelector('.modal-inner')
+    var modalContent = document.querySelector('.modal-content')
 
-      // remove validation in put if exists
-      var nextOneValidation = document.getElementById('next-one-validation')
-      if (nextOneValidation) {
-        nextOneValidation.classList.remove('err')
-      }
-      
-      homeCollectionATCBtns = Array.from(document.querySelectorAll('.product-form--atc-button'));
-
-      if (homeCollectionATCBtns.length) {
-        homeCollectionATCBtns.forEach(btn => {
-          if (localStorage.getItem('postcode')) {
-            btn.classList.remove('disabled')
-          }
-        })
-      }
-  
-     if (baseEl) {
-      fetch('/cart.js')
-      .then(response => response.json())
-      .then(data => { 
-        fourthPartCart(delivery_date, data.item_count);
-      });
-     }
-
+    if (localStorage.getItem('LondonOnly') == 'national' && document.querySelector('.delivery-button').classList.contains('london') ) {
+      return;
     }
+    if (localStorage.getItem('LondonOnly') == 'national' && modalContent.childNodes.length && modalInner.querySelector('.delivery-button').classList.contains('london') ) {
+      return;
+    }
+    if (localStorage.getItem('LondonOnly') == 'london' && !document.querySelector('.delivery-button').classList.contains('london') ) {
+      return;
+    }
+    if (localStorage.getItem('LondonOnly') == 'london' && modalContent.childNodes.length && !modalInner.querySelector('.delivery-button').classList.contains('london') ) {
+      return;
+    }
+    
+      if (confirmDeliverySidebarValue) {
+        confirmDeliveryInput.forEach(btn => {
+          btn.innerHTML = confirmDeliverySidebarValue;
+        })
+
+        delivery_date = confirmDeliverySidebarValue
+
+        var productHandle;
+        var productDeliveryDateName;
+        // Get product handle for custom named delivery date
+        
+
+
+        if (modalInner && modalContent.childNodes.length) {
+          productHandle = modalInner.querySelector('.delivery-button').dataset.stickerHandle;
+          modalInner.querySelector('.atcButton').classList.remove('disabled')
+        } else {
+          var prodBtn = document.querySelector('.prodATCbtn')
+          productHandle = document.querySelector('.delivery-button').dataset.stickerHandle
+          if (prodBtn) {prodBtn.classList.remove('disabled')}
+        }
+
+        if (baseEl) {
+          //  if setting delivery date on cart page no need to save to a delivery_date. Change delivery date but nothing is saved to localstorage
+          var date = document.querySelector('.button-title')
+          date.innerHTML = delivery_date
+          if (document.getElementById('furthestDate')) { document.getElementById('furthestDate').innerHTML = delivery_date }
+          if (document.getElementById('furthestDate2')) { document.getElementById('furthestDate2').innerHTML = delivery_date }
+          if (document.getElementById('furthestDate3')) { document.getElementById('furthestDate3').innerHTML = delivery_date }
+
+        } else {
+          // if it's not on cart page then save delivery date to individual product handle
+          var productDeliveryDateName = `deliveryDate${productHandle}`
+          localStorage.setItem(productDeliveryDateName, delivery_date)
+          setExpiryDate(delivery_date, productHandle)
+        }
+        
+
+        // remove validation in put if exists
+        var nextOneValidation = document.getElementById('next-one-validation')
+        if (nextOneValidation) {
+          nextOneValidation.classList.remove('err')
+        }
+      }
   }
 
   function checkIfUpsellAdded() {
@@ -949,7 +1103,7 @@ document.head.appendChild(script);
   
     // take selected delivery instruction and add to note obj
     notesArr.push({"DeliveryInstructions": deliveryInstructionsValue})
-    notesArr.push({'delivery_date': localStorage.getItem('deliveryDate')})
+    notesArr.push({'delivery_date': document.querySelector('button-title').innerText})
   
   
     // if card is selected and has message
@@ -1016,7 +1170,6 @@ document.head.appendChild(script);
         document.getElementById("lower-rung-sidebar").classList.add('show')
         document.getElementById("twodate").value = localStorage.getItem('deliveryDate')
       }
-
   }
   
   // cart flow - run on cart page
@@ -1054,21 +1207,7 @@ document.head.appendChild(script);
                 deliveryOptionsSelect(data)
                 cloneCartCheckoutButton()
 
-                // fetch('https://nameless-caverns-60814.herokuapp.com/api/occasion?shop=nova-blooms-uk.myshopify.com')
-                //   .then(res => res.json())
-                //   .then(async data => {
-                    // occasionOptionsSelect(data)
-
-                    // if delivery date in localstorage already initialize base4el
-                    if (localStorage.getItem('deliveryDate')) {
-                      fetch('/cart.js')
-                      .then(response => response.json())
-                      .then(data => { 
-                        fourthPartCart(localStorage.getItem('deliveryDate'), data.item_count);
-                      });
-                    }
-
-                  // })
+                  fourthPartCart();
               })   
         })
         .catch(err => console.log(err))
@@ -1078,10 +1217,10 @@ document.head.appendChild(script);
   }
 
   function homeCollectionFnsInit() {
-    var deliveryButton = document.querySelector('.button-title')
-    if (deliveryButton && localStorage.getItem('deliveryDate')) {
-      deliveryButton.innerHTML = localStorage.getItem('deliveryDate')
-    }
+    // var deliveryButton = document.querySelector('.button-title')
+    // if (deliveryButton && localStorage.getItem('deliveryDate')) {
+    //   deliveryButton.innerHTML = localStorage.getItem('deliveryDate')
+    // }
 
     var verifypostcodeButton = document.getElementById('verifypostcode')
 
@@ -1117,3 +1256,4 @@ document.head.appendChild(script);
       })
       .catch(err => console.log(err))
   }
+  
