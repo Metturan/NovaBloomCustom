@@ -48,6 +48,8 @@ export default function applyAuthMiddleware(app) {
         req.query
       );
 
+      console.log(session.accessToken)
+
       const host = req.query.host;
       app.set(
         "active-shopify-shops",
