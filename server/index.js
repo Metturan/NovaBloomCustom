@@ -81,7 +81,6 @@ export async function createServer(
 
   app.get("/products-count", verifyRequest(app), async (req, res) => {
     const session = await Shopify.Utils.loadCurrentSession(req, res, true);
-    console.log('TESTVARIABLE', session)
     const { Product } = await import(
       `@shopify/shopify-api/dist/rest-resources/${Shopify.Context.API_VERSION}/index.js`
     );
@@ -474,8 +473,8 @@ export async function createServer(
   });
 
   app.use("/*", async (req, res, next) => {
-    const { shop } = req.query;
-    console.log('asdf', shop)
+    const { shop, accessToken } = req.query;
+    console.log('asdf', accessToken)
     // updateThemeLiquid(shop, req.query.host, process.env.SHOPIFY_API_KEY)
     // Detect whether we need to reinstall the app, any request from Shopify will
     // include a shop in the query parameters.
