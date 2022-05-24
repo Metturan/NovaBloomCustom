@@ -474,7 +474,7 @@ export async function createServer(
 
   app.use("/*", async (req, res, next) => {
     const { shop } = req.query;
-    console.log('asdf', process.env.API_SECRET_KEY)
+    console.log('fff', process.env.API_SECRET_KEY)
     // updateThemeLiquid(shop, req.query.host, process.env.SHOPIFY_API_KEY)
     // Detect whether we need to reinstall the app, any request from Shopify will
     // include a shop in the query parameters.
