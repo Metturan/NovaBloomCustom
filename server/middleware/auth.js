@@ -15,7 +15,8 @@ export default function applyAuthMiddleware(app) {
       res,
       req.query.shop,
       "/auth/callback",
-      app.get("use-offline-tokens")
+      false
+      // app.get("use-online-tokens")
     );
 
     res.redirect(redirectUrl);
