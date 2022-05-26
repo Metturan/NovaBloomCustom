@@ -65,7 +65,7 @@ export default function applyAuthMiddleware(app) {
         path: "/webhooks",
       });
 
-      console.log(response.accessToken)
+      console.log('res',response.accessToken)
 
       if (!response["APP_UNINSTALLED"].success) {
         console.log(
