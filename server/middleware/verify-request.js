@@ -12,7 +12,7 @@ export default function verifyRequest(app, { returnHeader = true } = {}) {
     const session = await Shopify.Utils.loadCurrentSession(
       req,
       res,
-      app.get("use-online-tokens")
+      app.get("use-offline-tokens")
     );
 
     let shop = req.query.shop;
