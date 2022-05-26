@@ -15,7 +15,7 @@ export default function applyAuthMiddleware(app) {
       res,
       req.query.shop,
       "/auth/callback",
-      app.get("use-online-tokens")
+      app.get("use-offline-tokens")
     );
 
     res.redirect(redirectUrl);
@@ -64,6 +64,8 @@ export default function applyAuthMiddleware(app) {
         topic: "APP_UNINSTALLED",
         path: "/webhooks",
       });
+
+      console.log(response.accessToken)
 
       if (!response["APP_UNINSTALLED"].success) {
         console.log(
