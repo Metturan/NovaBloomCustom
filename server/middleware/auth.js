@@ -18,7 +18,7 @@ export default function applyAuthMiddleware(app) {
       false
       // app.get("use-online-tokens")
     );
-      console.log(redirectUrl)
+
     res.redirect(redirectUrl);
   });
 
@@ -49,7 +49,7 @@ export default function applyAuthMiddleware(app) {
         req.query
       );
 
-      console.log(session.accessToken)
+      console.log('session', session)
 
       const host = req.query.host;
       app.set(
