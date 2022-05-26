@@ -22,8 +22,6 @@ import '../models/Occassions.js'
 
 // import { updateThemeLiquid } from './theme/updateTheme.js'
 
-
-
 const USE_ONLINE_TOKENS = true;
 const TOP_LEVEL_OAUTH_COOKIE = "shopify_top_level_oauth";
 
@@ -474,7 +472,7 @@ export async function createServer(
 
   app.use("/*", async (req, res, next) => {
     const { shop } = req.query;
-    console.log('fff', process.env.API_SECRET_KEY)
+ 
     // updateThemeLiquid(shop, req.query.host, process.env.SHOPIFY_API_KEY)
     // Detect whether we need to reinstall the app, any request from Shopify will
     // include a shop in the query parameters.

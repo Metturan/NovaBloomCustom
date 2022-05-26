@@ -159,7 +159,7 @@ document.head.appendChild(script);
         <h2 style="margin-bottom: 23px;padding-top:23px;" class="title-multi">STEP 1 - choose delivery</h2>
         <div class="inner-step-container">
           <div style="margin-bottom: 7px;">
-            <button onclick="click_delivery_input();click_cart_delivery_input(furthestLeadDays, furthestDate)" class="delivery-button"><span class="button-title">Select Delivery Date</span><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 122.88 122.88" style="enable-background:new 0 0 122.88 122.88" xml:space="preserve"><g><path d="M81.61,4.73c0-2.61,2.58-4.73,5.77-4.73c3.19,0,5.77,2.12,5.77,4.73v20.72c0,2.61-2.58,4.73-5.77,4.73 c-3.19,0-5.77-2.12-5.77-4.73V4.73L81.61,4.73z M66.11,103.81c-0.34,0-0.61-1.43-0.61-3.2c0-1.77,0.27-3.2,0.61-3.2H81.9 c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H66.11L66.11,103.81z M15.85,67.09c-0.34,0-0.61-1.43-0.61-3.2 c0-1.77,0.27-3.2,0.61-3.2h15.79c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H15.85L15.85,67.09z M40.98,67.09 c-0.34,0-0.61-1.43-0.61-3.2c0-1.77,0.27-3.2,0.61-3.2h15.79c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H40.98 L40.98,67.09z M66.11,67.09c-0.34,0-0.61-1.43-0.61-3.2c0-1.77,0.27-3.2,0.61-3.2H81.9c0.34,0,0.61,1.43,0.61,3.2 c0,1.77-0.27,3.2-0.61,3.2H66.11L66.11,67.09z M91.25,67.09c-0.34,0-0.61-1.43-0.61-3.2c0-1.77,0.27-3.2,0.61-3.2h15.79 c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H91.25L91.25,67.09z M15.85,85.45c-0.34,0-0.61-1.43-0.61-3.2 c0-1.77,0.27-3.2,0.61-3.2h15.79c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H15.85L15.85,85.45z M40.98,85.45 c-0.34,0-0.61-1.43-0.61-3.2c0-1.77,0.27-3.2,0.61-3.2h15.79c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H40.98 L40.98,85.45z M66.11,85.45c-0.34,0-0.61-1.43-0.61-3.2c0-1.77,0.27-3.2,0.61-3.2H81.9c0.34,0,0.61,1.43,0.61,3.2 c0,1.77-0.27,3.2-0.61,3.2H66.11L66.11,85.45z M91.25,85.45c-0.34,0-0.61-1.43-0.61-3.2c0-1.77,0.27-3.2,0.61-3.2h15.79 c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H91.25L91.25,85.45z M15.85,103.81c-0.34,0-0.61-1.43-0.61-3.2 c0-1.77,0.27-3.2,0.61-3.2h15.79c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H15.85L15.85,103.81z M40.98,103.81 c-0.34,0-0.61-1.43-0.61-3.2c0-1.77,0.27-3.2,0.61-3.2h15.79c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H40.98 L40.98,103.81z M29.61,4.73c0-2.61,2.58-4.73,5.77-4.73s5.77,2.12,5.77,4.73v20.72c0,2.61-2.58,4.73-5.77,4.73 s-5.77-2.12-5.77-4.73V4.73L29.61,4.73z M6.4,45.32h110.07V21.47c0-0.8-0.33-1.53-0.86-2.07c-0.53-0.53-1.26-0.86-2.07-0.86H103 c-1.77,0-3.2-1.43-3.2-3.2c0-1.77,1.43-3.2,3.2-3.2h10.55c2.57,0,4.9,1.05,6.59,2.74c1.69,1.69,2.74,4.02,2.74,6.59v27.06v65.03 c0,2.57-1.05,4.9-2.74,6.59c-1.69,1.69-4.02,2.74-6.59,2.74H9.33c-2.57,0-4.9-1.05-6.59-2.74C1.05,118.45,0,116.12,0,113.55V48.52 V21.47c0-2.57,1.05-4.9,2.74-6.59c1.69-1.69,4.02-2.74,6.59-2.74H20.6c1.77,0,3.2,1.43,3.2,3.2c0,1.77-1.43,3.2-3.2,3.2H9.33 c-0.8,0-1.53,0.33-2.07,0.86c-0.53,0.53-0.86,1.26-0.86,2.07V45.32L6.4,45.32z M116.48,51.73H6.4v61.82c0,0.8,0.33,1.53,0.86,2.07 c0.53,0.53,1.26,0.86,2.07,0.86h104.22c0.8,0,1.53-0.33,2.07-0.86c0.53-0.53,0.86-1.26,0.86-2.07V51.73L116.48,51.73z M50.43,18.54 c-1.77,0-3.2-1.43-3.2-3.2c0-1.77,1.43-3.2,3.2-3.2h21.49c1.77,0,3.2,1.43,3.2,3.2c0,1.77-1.43,3.2-3.2,3.2H50.43L50.43,18.54z"/></g></svg></button>
+            <button onclick="click_delivery_input();" class="delivery-button"><span class="button-title">Select Delivery Date</span><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 122.88 122.88" style="enable-background:new 0 0 122.88 122.88" xml:space="preserve"><g><path d="M81.61,4.73c0-2.61,2.58-4.73,5.77-4.73c3.19,0,5.77,2.12,5.77,4.73v20.72c0,2.61-2.58,4.73-5.77,4.73 c-3.19,0-5.77-2.12-5.77-4.73V4.73L81.61,4.73z M66.11,103.81c-0.34,0-0.61-1.43-0.61-3.2c0-1.77,0.27-3.2,0.61-3.2H81.9 c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H66.11L66.11,103.81z M15.85,67.09c-0.34,0-0.61-1.43-0.61-3.2 c0-1.77,0.27-3.2,0.61-3.2h15.79c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H15.85L15.85,67.09z M40.98,67.09 c-0.34,0-0.61-1.43-0.61-3.2c0-1.77,0.27-3.2,0.61-3.2h15.79c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H40.98 L40.98,67.09z M66.11,67.09c-0.34,0-0.61-1.43-0.61-3.2c0-1.77,0.27-3.2,0.61-3.2H81.9c0.34,0,0.61,1.43,0.61,3.2 c0,1.77-0.27,3.2-0.61,3.2H66.11L66.11,67.09z M91.25,67.09c-0.34,0-0.61-1.43-0.61-3.2c0-1.77,0.27-3.2,0.61-3.2h15.79 c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H91.25L91.25,67.09z M15.85,85.45c-0.34,0-0.61-1.43-0.61-3.2 c0-1.77,0.27-3.2,0.61-3.2h15.79c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H15.85L15.85,85.45z M40.98,85.45 c-0.34,0-0.61-1.43-0.61-3.2c0-1.77,0.27-3.2,0.61-3.2h15.79c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H40.98 L40.98,85.45z M66.11,85.45c-0.34,0-0.61-1.43-0.61-3.2c0-1.77,0.27-3.2,0.61-3.2H81.9c0.34,0,0.61,1.43,0.61,3.2 c0,1.77-0.27,3.2-0.61,3.2H66.11L66.11,85.45z M91.25,85.45c-0.34,0-0.61-1.43-0.61-3.2c0-1.77,0.27-3.2,0.61-3.2h15.79 c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H91.25L91.25,85.45z M15.85,103.81c-0.34,0-0.61-1.43-0.61-3.2 c0-1.77,0.27-3.2,0.61-3.2h15.79c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H15.85L15.85,103.81z M40.98,103.81 c-0.34,0-0.61-1.43-0.61-3.2c0-1.77,0.27-3.2,0.61-3.2h15.79c0.34,0,0.61,1.43,0.61,3.2c0,1.77-0.27,3.2-0.61,3.2H40.98 L40.98,103.81z M29.61,4.73c0-2.61,2.58-4.73,5.77-4.73s5.77,2.12,5.77,4.73v20.72c0,2.61-2.58,4.73-5.77,4.73 s-5.77-2.12-5.77-4.73V4.73L29.61,4.73z M6.4,45.32h110.07V21.47c0-0.8-0.33-1.53-0.86-2.07c-0.53-0.53-1.26-0.86-2.07-0.86H103 c-1.77,0-3.2-1.43-3.2-3.2c0-1.77,1.43-3.2,3.2-3.2h10.55c2.57,0,4.9,1.05,6.59,2.74c1.69,1.69,2.74,4.02,2.74,6.59v27.06v65.03 c0,2.57-1.05,4.9-2.74,6.59c-1.69,1.69-4.02,2.74-6.59,2.74H9.33c-2.57,0-4.9-1.05-6.59-2.74C1.05,118.45,0,116.12,0,113.55V48.52 V21.47c0-2.57,1.05-4.9,2.74-6.59c1.69-1.69,4.02-2.74,6.59-2.74H20.6c1.77,0,3.2,1.43,3.2,3.2c0,1.77-1.43,3.2-3.2,3.2H9.33 c-0.8,0-1.53,0.33-2.07,0.86c-0.53,0.53-0.86,1.26-0.86,2.07V45.32L6.4,45.32z M116.48,51.73H6.4v61.82c0,0.8,0.33,1.53,0.86,2.07 c0.53,0.53,1.26,0.86,2.07,0.86h104.22c0.8,0,1.53-0.33,2.07-0.86c0.53-0.53,0.86-1.26,0.86-2.07V51.73L116.48,51.73z M50.43,18.54 c-1.77,0-3.2-1.43-3.2-3.2c0-1.77,1.43-3.2,3.2-3.2h21.49c1.77,0,3.2,1.43,3.2,3.2c0,1.77-1.43,3.2-3.2,3.2H50.43L50.43,18.54z"/></g></svg></button>
           </div>
           <p id="next-one-validation">Please select a delivery date to continue</p>
         </div>
@@ -313,9 +313,9 @@ document.head.appendChild(script);
             ].includes(this._url)
           ) {
             var data = JSON.parse(this.response);
+            
             checkCardInCart(data);
-            console.log(furthestLeadDays)
-
+            
             calculateFurthestLeadDay(data.item_count)
             fourthPartCart(data.item_count)
           }
@@ -417,42 +417,48 @@ document.head.appendChild(script);
   }
 
   function calculateFurthestLeadDay(item_count) {
-    var cartItems = Array.from(document.querySelectorAll('.cart-item'))
+      var furthestLeadDays = 0;
       var furthestDateInt = 0;
+      const d = new Date();
+      let hour = d.getHours();
 
+        var cartItems = Array.from(document.querySelectorAll('.cart-item'))
+        console.log(cartItems)
           cartItems.forEach(function(item) {
-            Object.keys(localStorage).forEach(function(key){
-              var productHand = item.dataset.cartitemhandle
-              var leadTime = parseInt(item.dataset.stickerDelivery.trim());
-              
-              // var split = key.split('_')
-              // if (split[1] == productHand) {
-              //     if (localStorage.getItem(`deliveryDate_${productHand}`)) {
-              //         if (furthestDateInt < Math.abs(new Date(localStorage.getItem(`deliveryDate_${productHand}`)))) {
-              //           furthestDateInt = Math.abs(new Date(localStorage.getItem(`deliveryDate_${productHand}`)))
-              //           furthestDate = localStorage.getItem(`deliveryDate_${productHand}`)
-              //         }
-              //         // Find furthest lead days
-              //         if (furthestLeadDays < leadTime) {
-              //           furthestLeadDays = leadTime
-              //         }
-              //     }
-              // }
 
-              // Find furthest lead days
-              if (furthestLeadDays < leadTime) {
-                furthestLeadDays = leadTime
-              }
-            });
+              Object.keys(localStorage).forEach(function(key){
+                var productHand = item.dataset.cartitemhandle
+                var leadTime = parseInt(item.dataset.stickerDelivery.trim());
+  
+                // Find furthest lead days
+                if (furthestLeadDays < leadTime) {
+                  furthestLeadDays = leadTime
+                }
+              });
+
           })
+
+
+
+      let dayInt = d.getDay()
+        var adjustmentsArray = [[],[1,0,0,0,0,2,2],[],[],[1,0,2,2,2,2,2],[3,2,2,2,2,2,4]]
+        // var oneDayAdjustments = [1,0,0,0,0,2,2]
+        // var fourDayAdjustments = [1,0,2,2,2,2,2]
+        // var fiveDayAdjustments = [3,2,2,2,2,2,4]
+        var offset = adjustmentsArray[furthestLeadDays][dayInt]
+        console.log(offset)
+
+        var minDateNumber = hour >= 17 ? `+${parseInt(1 + furthestLeadDays + offset)}D` : `+${parseInt(furthestLeadDays + offset)}D`
+        console.log(minDateNumber)
+        $("#twodate").datepicker("option", "minDate", minDateNumber);
+        console.log(furthestLeadDays)
+
   }
   
   const fourthPartCart = (countFromUpdateCart) => {
       var data = document.querySelector('.button-title').innerText;
       var itemCount = document.querySelectorAll('.cart-item').length
       countFromUpdateCart ? itemCount = countFromUpdateCart : null
-
-      console.log(itemCount)
 
             // determine furthest delivery date based on delivery dates of cart.
       // When calendar pops up find lead of furthest date out and block calendar
@@ -480,13 +486,13 @@ document.head.appendChild(script);
         `<div id="edit-info-container">
           <div class="leftsideEdit">
             ${itemCount > 1 ? 
-              `<div>Attention: ${deliveryDateCount > 1 ? 'Your cart contains items with multiple delivery dates. ' : ''}Delivery date is set for <strong id="furthestDate">${data ? data : furthestDate}</strong>${deliveryDateCount > 1 ? ', which is the furthest date' : ''}. Click edit information to select a different date or remove some items in your cart.</div><div style="margin-top:40px;" class="editTitle">Delivery Details</div><div>Delivery date: <strong id="furthestDate3">${data ? data: furthestDate}</strong></div>` 
+              `<div>Attention: ${deliveryDateCount > 1 ? 'If cart contains multiple delivery dates, the furthest date will be selected. ' : ''}Delivery date is set for <strong id="furthestDate">${data ? data : furthestDate}</strong>${deliveryDateCount > 1 ? ', which is the furthest date' : ''}. Click edit information to select a different date or remove some items in your cart.</div><div style="margin-top:40px;" class="editTitle">Delivery Details</div><div>Delivery date: <strong id="furthestDate3">${data ? data: furthestDate}</strong></div>` 
               :
               `<div class="editTitle">Delivery Details</div><div>Delivery date: <strong id="furthestDate2">${data ? data : furthestDate}</strong></div>`
             }
           </div>
           <div class="rightsideEdit">
-            <div onclick="click_delivery_input();click_cart_delivery_input(furthestLeadDays)" class="edit-info">Edit delivery date</div>
+            <div onclick="click_delivery_input();" class="edit-info">Edit delivery date</div>
             <button id="smallStyleBtn" onclick="four_click_prev()" class="row-btn-prev row-btn">Back</button>
           </div>
         </div>`
@@ -600,6 +606,13 @@ document.head.appendChild(script);
     jQuery.post('/cart/add.js', {
       items: arrOfProds
     }, function() {
+      // add in dataset spot to detect lead days of all products.
+      // get furthest lead day of all products added
+      // once furthest lead date is taken compare to current delivery_date from button title.
+      // if furthest lead date + current date > delivery_date then reload should be taken to step 1 of cart.
+
+
+      // end comment
       localStorage.setItem('cartUpsell', true)
       localStorage.setItem('deliveryDateBeforeCartUpsellReload', document.querySelector('.button-title').innerText)
       window.location.reload()
@@ -853,46 +866,67 @@ document.head.appendChild(script);
       });
   }
 
-  function click_cart_delivery_input(furthestLeadDays, furthestDate) {
-    console.log(furthestDate)
-    if (furthestLeadDays) {
-      if (furthestLeadDays == 0) { furthestLeadDays = 1 }
-      const d = new Date();
-      let hour = d.getHours();
-      var minDateNumber = hour >= 17 ? `+${parseInt(1 + furthestLeadDays)}D` : `+${furthestLeadDays}D`
-      $("#twodate").datepicker("option", "minDate", minDateNumber);
-    }
-  }
+  // function click_cart_delivery_input(furthestLeadDays, furthestDate) {
+  //   console.log(furthestDate)
+
+  //   // get current day in int
+  //   var day = new Date()
+  //   var dayInt = day.getDay();
+
+
+  //   if (furthestLeadDays) {
+  //     if (furthestLeadDays == 0) { furthestLeadDays = 1 }
+  //     const d = new Date();
+  //     let hour = d.getHours();
+  //     let dayInt = d.getDay()
+  //     var adjustmentsArray = [[],[1,0,0,0,0,2,2],[],[],[1,0,2,2,2,2,2],[3,2,2,2,2,2,4]]
+  //     // var oneDayAdjustments = [1,0,0,0,0,2,2]
+  //     // var fourDayAdjustments = [1,0,2,2,2,2,2]
+  //     // var fiveDayAdjustments = [3,2,2,2,2,2,4]
+  //     var offset = adjustmentsArray[furthestLeadDays][dayInt]
+
+  //     var minDateNumber = hour >= 17 ? `+${parseInt(1 + furthestLeadDays + offset)}D` : `+${parseInt(furthestLeadDays + offset)}D`
+  //     $("#twodate").datepicker("option", "minDate", minDateNumber);
+  //   }
+  // }
   
   function click_delivery_input(btn) {
     // show bottom rung if postcode already entered
     if (localStorage.getItem('postcode')) {
-      document.getElementById('lower-rung-sidebar').classList.add('show')
+      var form = document.getElementById('form')
+      var event = new Event('submit')
+      form.dispatchEvent(event);
+      // document.getElementById('lower-rung-sidebar').classList.add('show')
     }
 
     // Make calendar dynamically block lead dates for next day, 4 day and 5 day.
     const d = new Date();
     let hour = d.getHours();
     
+
     if (baseEl) {
-
-
+      calculateFurthestLeadDay()
 
     } else {
-
       if (btn && btn.dataset.stickerDelivery.trim().length > 0) {
         var leadDay = parseInt(btn.dataset.stickerDelivery.trim())
-        var minDateNumber = hour >= 17 ? `+${parseInt(1 + leadDay)}D` : `+${leadDay}D`
+        let dayInt = d.getDay()
+        var adjustmentsArray = [[],[1,0,0,0,0,2,2],[],[],[1,0,2,2,2,2,2],[3,2,2,2,2,2,4]]
+        // var oneDayAdjustments = [1,0,0,0,0,2,2]
+        // var fourDayAdjustments = [1,0,2,2,2,2,2]
+        // var fiveDayAdjustments = [3,2,2,2,2,2,4]
+        var offset = adjustmentsArray[leadDay][dayInt]
+
+        var minDateNumber = hour >= 17 ? `+${parseInt(1 + leadDay + offset)}D` : `+${parseInt(leadDay + offset)}D`
+        console.log(minDateNumber)
         $("#twodate").datepicker("option", "minDate", minDateNumber);
-  
+        console.log('runn')
       } else {
         var minDateNumber = hour >= 17 ? "+2D" : "+1D"
         $("#twodate").datepicker("option", "minDate", minDateNumber);
       }
 
     }
-
-
     slideoutContainer.classList.add('open');
     document.getElementById('twodate').value = ''
   }
@@ -1051,6 +1085,67 @@ document.head.appendChild(script);
   }
 
   function checkIfUpsellAdded() {
+    // check if current date + furthest lead days > button-title delivery date 
+    // if true do nothing and start at first step. If false then two click next works
+          // determine furthest delivery date based on delivery dates of cart.
+      // When calendar pops up find lead of furthest date out and block calendar
+      var furthestLeadDays = 0;
+      var furthestDate;
+      var currentDatePlusLeadTime;
+      var cartItems = Array.from(document.querySelectorAll('.cart-item'))
+      var furthestDateInt = 0;
+
+      cartItems.forEach(function(item) {
+        Object.keys(localStorage).forEach(function(key){
+          var productHand = item.dataset.cartitemhandle
+          var leadTime = parseInt(item.dataset.stickerDelivery.trim());
+          
+          var split = key.split('_')
+          if (split[1] == productHand) {
+              if (localStorage.getItem(`deliveryDate_${productHand}`)) {
+                  if (furthestDateInt < Math.abs(new Date(localStorage.getItem(`deliveryDate_${productHand}`)))) {
+                    furthestDateInt = Math.abs(new Date(localStorage.getItem(`deliveryDate_${productHand}`)))
+                    furthestDate = localStorage.getItem(`deliveryDate_${productHand}`)
+                  }
+                  // Find furthest lead days
+                  if (furthestLeadDays < leadTime) {
+                    furthestLeadDays = leadTime
+                  }
+              }
+          }
+
+          // Find furthest lead days
+          if (furthestLeadDays < leadTime) {
+            furthestLeadDays = leadTime
+          }
+        });
+      })
+
+      const d = new Date();
+
+      if (furthestLeadDays) {
+        if (furthestLeadDays == 0) { furthestLeadDays = 1 }
+        let hour = d.getHours();
+        let dayInt = d.getDay()
+        var adjustmentsArray = [[],[1,0,0,0,0,2,2],[],[],[1,0,2,2,2,2,2],[3,2,2,2,2,2,4]]
+
+        var offset = adjustmentsArray[furthestLeadDays][dayInt]
+  
+        var minDateNumber = hour >= 17 ? `${parseInt(1 + furthestLeadDays + offset)}` : `${parseInt(furthestLeadDays + offset)}`
+       
+        currentDatePlusLeadTime = new Date(d.setDate(d.getDate() + parseInt(minDateNumber)))
+        var newFurthestDate = new Date(furthestDate)
+        console.log('reload page', new Date(currentDatePlusLeadTime).valueOf(), new Date(furthestDate).valueOf())
+      }
+
+      if (currentDatePlusLeadTime.valueOf() > newFurthestDate.valueOf() && currentDatePlusLeadTime.getDate() != newFurthestDate.getDate() ) {
+        console.log('asdf')
+        document.querySelector('.button-title').innerText = 'Select Delivery Date'
+        localStorage.removeItem('cartUpsell');
+        return;
+      }
+
+
     if (localStorage.getItem('cartUpsell') == 'true') {
       // change to third step
       console.log('cartupsell-in-effect')
