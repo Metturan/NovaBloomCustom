@@ -106,7 +106,7 @@ export async function createServer(
     const MongoDeliveryInstructions = mongoose.model('deliveryOptions')
     const MongoOccasions = mongoose.model('occasionOptions')
 
-    app.post("/api/collectionUpdate", async (req, res) => {
+    app.post("/api/collectionUpdate", verifyRequest({accessMode: 'offline', returnHeader: true}), async (req, res) => {
       const id = await Shopify.Utils.loadCurrentSession(req,res, false)
       console.log('SESSION', id)
       try {
