@@ -18,7 +18,7 @@ export default function applyAuthMiddleware(app) {
       false
       // app.get("use-online-tokens")
     );
-
+      console.log(redirectUrl)
     res.redirect(redirectUrl);
   });
 
