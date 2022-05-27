@@ -23,7 +23,7 @@ import '../models/Occassions.js'
 // import { updateThemeLiquid } from './theme/updateTheme.js'
 
 const USE_ONLINE_TOKENS = true;
-const USE_OFFLINE_TOKENS = true;
+// const USE_OFFLINE_TOKENS = true;
 const TOP_LEVEL_OAUTH_COOKIE = "shopify_top_level_oauth";
 
 const PORT = parseInt(process.env.PORT || "8081", 10);
@@ -62,8 +62,8 @@ export async function createServer(
   }));
   app.set("top-level-oauth-cookie", TOP_LEVEL_OAUTH_COOKIE);
   app.set("active-shopify-shops", ACTIVE_SHOPIFY_SHOPS);
-  // app.set("use-online-tokens", USE_ONLINE_TOKENS);
-  app.set("use-offline-tokens", USE_OFFLINE_TOKENS);
+  app.set("use-online-tokens", USE_ONLINE_TOKENS);
+  // app.set("use-offline-tokens", USE_OFFLINE_TOKENS);
 
   app.use(cookieParser(Shopify.Context.API_SECRET_KEY));
 
