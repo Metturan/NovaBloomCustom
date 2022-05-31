@@ -48,7 +48,7 @@ export default function applyAuthMiddleware(app) {
         req.query
       );
 
-      console.log('session', session)
+      console.log("session", session);
 
       const host = req.query.host;
       app.set(
@@ -58,18 +58,70 @@ export default function applyAuthMiddleware(app) {
         })
       );
 
-      const response = await Shopify.Webhooks.Registry.register({
+      const response_app_uninstall = await Shopify.Webhooks.Registry.register({
         shop: session.shop,
         accessToken: session.accessToken,
         topic: "APP_UNINSTALLED",
-        path: "/webhooks",
+        path: "/webhook/collections/update",
       });
 
-      if (!response["APP_UNINSTALLED"].success) {
+      if (!response_app_uninstall["APP_UNINSTALLED"].success) {
         console.log(
-          `Failed to register APP_UNINSTALLED webhook: ${response.result}`
+          `Failed to register APP_UNINSTALLED webhook: ${response_app_uninstall.result}`
         );
       }
+
+      const response_collections_update =
+        await Shopify.Webhooks.Registry.register({
+          shop: session.shop,
+          accessToken: session.accessToken,
+          topic: "COLLECTIONS_UPDATE",
+          path: "/webhook/collections/update",
+        });
+
+      if (!response_collections_update["COLLECTIONS_UPDATE"].success) {
+        console.log(
+          `Failed to register COLLECTIONS_UPDATE webhook: ${response_collections_update.result}`
+        );
+      }
+
+      const redirectUrl = await Shopify.Auth.beginAuth(
+        req,
+        res,
+        req.query.shop,
+        "/auth/token/callback",
+        !app.get("use-online-tokens") // offline if online
+      );
+
+      res.redirect(redirectUrl);
+    } catch (e) {
+      switch (true) {
+        case e instanceof Shopify.Errors.InvalidOAuthError:
+          res.status(400);
+          res.send(e.message);
+          break;
+        case e instanceof Shopify.Errors.CookieNotFound:
+        case e instanceof Shopify.Errors.SessionNotFound:
+          // This is likely because the OAuth session cookie expired before the merchant approved the request
+          res.redirect(`/auth?shop=${req.query.shop}`);
+          break;
+        default:
+          res.status(500);
+          res.send(e.message);
+          break;
+      }
+    }
+  });
+
+  app.get("/auth/token/callback", async (req, res) => {
+    try {
+      const session = await Shopify.Auth.validateAuthCallback(
+        req,
+        res,
+        req.query
+      );
+
+      const host = req.query.host;
 
       // Redirect to app with shop parameter upon auth
       res.redirect(`/?shop=${session.shop}&host=${host}`);
